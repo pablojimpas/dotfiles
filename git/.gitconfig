@@ -1,0 +1,10 @@
+[user]
+	signingkey = D3ED161FF0E3DEA9
+	name = pablojimpas
+	email = pablo@jimpas.me
+[commit]
+	gpgsign = true
+[core]
+	editor = nvim
+[credential]
+	helper = cache --timeout=3600

@@ -1,0 +1,34 @@
+#!/bin/sh
+# get current hour (24 clock format i.e. 0-23)
+hour=$(date +"%H")
+
+# if it is midnight to midafternoon will say G'morning
+if [ $hour -ge 6 -a $hour -lt 14 ]
+then
+  greet="Buenos días, $USER"
+# if it is midafternoon to evening ( before 6 pm) will say G'noon
+elif [ $hour -ge 14 -a $hour -lt 20 ]
+then
+  greet="Buenas tardes, $USER"
+else # it is good evening till midnight
+  greet="Buenas noches, $USER"
+fi
+
+# display greet
+echo $greet
+
+uptime -p
+echo $(uname -n) running $(uname -ro)
+
+echo Root partition usage: $(df -h 2> /dev/null | grep '/dev/mapper' | awk {'print $5'})
+
+n=$[$RANDOM % 101]
+if [ $n -ge 80 ];
+then
+	echo
+	fortune -s | lolcat -F 0.01
+elif [ $n -lt 5 ];
+then
+	echo
+	fortune -o | lolcat -F 0.01
+fi

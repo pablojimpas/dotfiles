@@ -1,0 +1,15 @@
+[submodule "suckless/.local/src/dwm"]
+	path = suckless/.local/src/dwm
+	url = https://github.com/pablojimpas/dwm.git
+[submodule "suckless/.local/src/dwmblocks"]
+	path = suckless/.local/src/dwmblocks
+	url = https://github.com/pablojimpas/dwmblocks.git
+[submodule "suckless/.local/src/st"]
+	path = suckless/.local/src/st
+	url = https://github.com/pablojimpas/st.git
+[submodule "suckless/.local/src/dmenu"]
+	path = suckless/.local/src/dmenu
+	url = https://github.com/pablojimpas/dmenu.git
+[submodule "utils/.config/mpv/scripts/mpvSockets"]
+	path = utils/.config/mpv/scripts/mpvSockets
+	url = https://github.com/wis/mpvSockets.git

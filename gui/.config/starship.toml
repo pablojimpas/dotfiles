@@ -1,0 +1,85 @@
+[character]
+symbol = "➜"
+vicmd_symbol = " ❮"
+error_symbol = "✗"
+use_symbol_for_status = true
+
+[cmd_duration]
+min_time = 500
+
+[[battery.display]]  # "bold red" style when capacity is between 0% and 30%
+threshold = 30
+style = "bold red"
+
+[[battery.display]]  # "bold yellow" style when capacity is between 30% and 60%
+threshold = 60
+style = "bold yellow"
+
+[[battery.display]]  # "green" style when capacity is between 60% and 99%
+threshold = 99
+style = "green"
+
+[aws]
+symbol = " "
+
+[battery]
+full_symbol = ""
+charging_symbol = ""
+discharging_symbol = ""
+
+[conda]
+symbol = " "
+
+[docker]
+symbol = " "
+
+[elixir]
+symbol = " "
+
+[elm]
+symbol = " "
+
+[git_branch]
+symbol = " "
+
+[golang]
+symbol = " "
+
+[haskell]
+symbol = " "
+
+[hg_branch]
+symbol = " "
+
+[java]
+symbol = " "
+
+[julia]
+symbol = " "
+
+[memory_usage]
+symbol = " "
+
+[nim]
+symbol = " "
+
+[nix_shell]
+symbol = " "
+
+[nodejs]
+symbol = " "
+
+[package]
+symbol = " "
+
+[php]
+symbol = " "
+
+[python]
+symbol = " "
+
+[ruby]
+symbol = " "
+
+[rust]
+symbol = " "
