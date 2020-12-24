@@ -1,0 +1,12 @@
+hash -d cac=/home/polo/.cache 
+hash -d cf=/home/polo/.config 
+hash -d D=/home/polo/tmp 
+hash -d d=/home/polo/doc 
+hash -d dt=/home/polo/.local/share 
+hash -d h=/home/polo 
+hash -d m=/home/polo/mus 
+hash -d mn=/mnt 
+hash -d pp=/home/polo/img 
+hash -d sc=/home/polo/.local/bin 
+hash -d src=/home/polo/.local/src 
+hash -d vv=/home/polo/vid 
