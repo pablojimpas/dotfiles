@@ -1,6 +1,6 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
+#!/bin/bash
+
+greeting
 
 # Vi mode and bindings
 set -o vi
@@ -8,7 +8,7 @@ bind -m vi-command 'Control-l: clear-screen'
 bind -m vi-insert 'Control-l: clear-screen'
 bind 'set show-mode-in-prompt on'
 bind 'set vi-ins-mode-string \1\e[5 q\2'
-bind 'set vi-cmd-mode-string \1\e[2 q\2' 
+bind 'set vi-cmd-mode-string \1\e[2 q\2'
 
 # If not running interactively, don't do anything
 case $- in
@@ -96,18 +96,9 @@ fi
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
-alias ll='ls -alF --git'
+alias ll='ls -alF'
 alias la='ls -a'
-alias l='ls -lF --git'
-
-alias zathura='zathura --fork'
-
-alias ls='exa'
-
-alias fd=fdfind
-alias bat=batcat
-
-alias py3=python3
+alias l='ls -lF'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -144,10 +135,6 @@ export LESS_TERMCAP_so=$'\e[01;33m'
 export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;4;31m'
 
-eval "$(starship init bash)"
-
-~/bin/greeting.sh
-
 # pip bash completion start
 _pip_completion()
 {
@@ -157,68 +144,3 @@ _pip_completion()
 }
 complete -o default -F _pip_completion pip3
 # pip bash completion end
-
-#
-# Installation:
-#
-# Via shell config file  ~/.bashrc  (or ~/.zshrc)
-#
-#   Append the contents to config file
-#   'source' the file in the config file
-#
-# You may also have a directory on your system that is configured
-#    for completion files, such as:
-#
-#    /usr/local/etc/bash_completion.d/
-
-###-begin-flutter-completion-###
-
-if type complete &>/dev/null; then
-  __flutter_completion() {
-    local si="$IFS"
-    IFS=$'\n' COMPREPLY=($(COMP_CWORD="$COMP_CWORD" \
-                           COMP_LINE="$COMP_LINE" \
-                           COMP_POINT="$COMP_POINT" \
-                           flutter completion -- "${COMP_WORDS[@]}" \
-                           2>/dev/null)) || return $?
-    IFS="$si"
-  }
-  complete -F __flutter_completion flutter
-elif type compdef &>/dev/null; then
-  __flutter_completion() {
-    si=$IFS
-    compadd -- $(COMP_CWORD=$((CURRENT-1)) \
-                 COMP_LINE=$BUFFER \
-                 COMP_POINT=0 \
-                 flutter completion -- "${words[@]}" \
-                 2>/dev/null)
-    IFS=$si
-  }
-  compdef __flutter_completion flutter
-elif type compctl &>/dev/null; then
-  __flutter_completion() {
-    local cword line point words si
-    read -Ac words
-    read -cn cword
-    let cword-=1
-    read -l line
-    read -ln point
-    si="$IFS"
-    IFS=$'\n' reply=($(COMP_CWORD="$cword" \
-                       COMP_LINE="$line" \
-                       COMP_POINT="$point" \
-                       flutter completion -- "${words[@]}" \
-                       2>/dev/null)) || return $?
-    IFS="$si"
-  }
-  compctl -K __flutter_completion flutter
-fi
-
-###-end-flutter-completion-###
-
-## Generated 2020-10-13 12:46:46.883549Z
-## By /home/polo/dev/flutter/bin/cache/flutter_tools.snapshot
-
-# Install Ruby Gems to ~/.gems
-export GEM_HOME="$HOME/.gems"
-export PATH="$HOME/.gems/bin:$PATH"

@@ -1,6 +1,13 @@
 set nocompatible
-filetype off 
+filetype off
 let mapleader = "\<Space>"
+
+if ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/plug.vim"'))
+	echo "Downloading junegunn/vim-plug to manage plugins..."
+	silent !mkdir -p ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/
+	silent !curl "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim" > ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/plug.vim
+	autocmd VimEnter * PlugInstall
+endif
 
 " =============================================================================
 " # PLUGINS
@@ -11,13 +18,14 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'editorconfig/editorconfig-vim'
 
 " Color schemes
-" Plug 'arcticicestudio/nord-vim'
-Plug 'morhetz/gruvbox'
+Plug 'arcticicestudio/nord-vim'
+" Plug 'morhetz/gruvbox'
 
 " GUI enhancements
 Plug 'itchyny/lightline.vim'
 Plug 'itchyny/vim-gitbranch'
 Plug 'machakann/vim-highlightedyank'
+Plug 'ap/vim-css-color'
 
 " Fuzzy finder
 Plug 'airblade/vim-rooter'
@@ -37,18 +45,18 @@ call plug#end()
 
 " Deal with colors
 
-let gruvbox_contrast_dark = 'hard'
-let gruvbox_invert_selection = '0'
+" let gruvbox_contrast_dark = 'hard'
+" let gruvbox_invert_selection = '0'
 
-" let g:nord_cursor_line_number_background = 1
-" let g:nord_uniform_status_lines = 1
-" let g:nord_bold_vertical_split_line = 1
-" let g:nord_uniform_diff_background = 1
-" let g:nord_italic = 1
-" let g:nord_italic_comments = 1
-" let g:nord_underline = 1
+let g:nord_cursor_line_number_background = 1
+let g:nord_uniform_status_lines = 1
+let g:nord_bold_vertical_split_line = 1
+let g:nord_uniform_diff_background = 1
+let g:nord_italic = 1
+let g:nord_italic_comments = 1
+let g:nord_underline = 1
 
-colorscheme gruvbox
+colorscheme nord
 set background=dark
 syntax on
 
@@ -57,7 +65,7 @@ if !has('gui_running')
 endif
 
 let g:lightline = {
-      \ 'colorscheme': 'gruvbox',
+      \ 'colorscheme': 'nord',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'cocstatus', 'gitbranch', 'readonly', 'filename', 'modified' ] ]
