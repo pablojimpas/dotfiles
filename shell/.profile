@@ -2,12 +2,12 @@
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
-    PATH="$PATH:$(du "$HOME/bin" | cut -f2 | paste -sd ':' -)"
+    PATH="$PATH:$(du -L "$HOME/bin" | cut -f2 | paste -sd ':' -)"
 fi
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/.local/bin" ] ; then
-    PATH="$PATH:$(du "$HOME/.local/bin" | cut -f2 | paste -sd ':' -)"
+    PATH="$PATH:$(du -L "$HOME/.local/bin" | cut -f2 | paste -sd ':' -)"
 fi
 
 # Default programs:
