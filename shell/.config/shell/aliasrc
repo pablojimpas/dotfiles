@@ -22,6 +22,8 @@ alias \
 
 # These common commands are just too long! Abbreviate them.
 alias \
+	l="ls -l" \
+	ll="ls -la" \
 	ka="killall" \
 	g="git" \
 	trem="transmission-remote" \
