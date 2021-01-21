@@ -18,8 +18,8 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'editorconfig/editorconfig-vim'
 
 " Color schemes
-Plug 'arcticicestudio/nord-vim'
-" Plug 'morhetz/gruvbox'
+" Plug 'arcticicestudio/nord-vim'
+Plug 'morhetz/gruvbox'
 
 " GUI enhancements
 Plug 'itchyny/lightline.vim'
@@ -38,6 +38,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Syntactic language support
 Plug 'lervag/vimtex'
 Plug 'sheerun/vim-polyglot'
+Plug 'dart-lang/dart-vim-plugin'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'rhysd/vim-clang-format'
 Plug 'stephpy/vim-yaml'
 
@@ -45,18 +47,17 @@ call plug#end()
 
 " Deal with colors
 
-" let gruvbox_contrast_dark = 'hard'
-" let gruvbox_invert_selection = '0'
+let gruvbox_contrast_dark = 'hard'
+let gruvbox_invert_selection = '0'
 
-let g:nord_cursor_line_number_background = 1
-let g:nord_uniform_status_lines = 1
-let g:nord_bold_vertical_split_line = 1
-let g:nord_uniform_diff_background = 1
-let g:nord_italic = 1
-let g:nord_italic_comments = 1
-let g:nord_underline = 1
+" let g:nord_cursor_line_number_background = 1
+" let g:nord_bold_vertical_split_line = 1
+" let g:nord_uniform_diff_background = 1
+" let g:nord_italic = 1
+" let g:nord_italic_comments = 1
+" let g:nord_underline = 1
 
-colorscheme nord
+colorscheme gruvbox
 set background=dark
 syntax on
 
@@ -65,7 +66,7 @@ if !has('gui_running')
 endif
 
 let g:lightline = {
-      \ 'colorscheme': 'nord',
+      \ 'colorscheme': 'gruvbox',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'cocstatus', 'gitbranch', 'readonly', 'filename', 'modified' ] ]
@@ -93,6 +94,11 @@ map <C-p> :Files<CR>
 let g:rustfmt_autosave = 1
 let g:rust_clip_command = 'xclip -selection clipboard'
 
+" Dart
+let g:dart_style_guide = 2
+let g:dart_format_on_save = 1
+let dart_html_in_string=v:true
+
 " Completion
 " Give more space for displaying messages.
 set cmdheight=2
@@ -115,7 +121,7 @@ filetype plugin indent on
 set autoindent
 set timeoutlen=300 " http://stackoverflow.com/questions/2158516/delay-before-o-opens-a-new-line
 set encoding=utf-8
-set scrolloff=2
+set scrolloff=8
 set noshowmode
 set hidden
 set nowrap
@@ -130,6 +136,8 @@ set splitbelow
 " Permanent undo
 set undodir=~/.vimdid
 set undofile
+
+set smartindent
 
 " Use wide tabs
 set shiftwidth=8
@@ -184,6 +192,9 @@ set shortmess+=c
 " =============================================================================
 " # Keyboard shortcuts
 " =============================================================================
+" Move selected lines up and down
+vnoremap K :m '<-2<CR>gv=gv
+vnoremap J :m '>+1<CR>gv=gv
 " Ctrl+h to stop searching
 vnoremap <C-h> :nohlsearch<cr>
 nnoremap <C-h> :nohlsearch<cr>
@@ -236,14 +247,10 @@ endfunction
 
 inoremap <silent><expr> <c-space> coc#refresh()
 
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
-" position. Coc only does snippet and additional edit on confirm.
-" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
-if exists('*complete_info')
-  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-else
-  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-endif
+" Make <CR> auto-select the first completion item and notify coc.nvim to
+" format on enter, <cr> could be remapped by other vim plugin
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
@@ -262,8 +269,10 @@ nnoremap <silent> K :call <SID>show_documentation()<CR>
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
   else
-    call CocAction('doHover')
+    execute '!' . &keywordprg . " " . expand('<cword>')
   endif
 endfunction
 
@@ -272,6 +281,10 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
+
+" Formatting selected code.
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
 
 " <leader><leader> toggles between buffers
 nnoremap <leader><leader> <c-^>

@@ -10,10 +10,26 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$PATH:$(du -L "$HOME/.local/bin" | cut -f2 | paste -sd ':' -)"
 fi
 
+# Add dotnet to path if exists
+if [ -d "$HOME/flutter" ] ; then
+    PATH="$PATH:$HOME/dotnet"
+    DOTNET_ROOT=$HOME/dotnet
+    PATH="$PATH:$HOME/.dotnet/tools"
+    DOTNET_CLI_TELEMETRY_OPTOUT=1
+fi
+
+# Add flutter to path if exists
+if [ -d "$HOME/flutter" ] ; then
+    PATH="$PATH:$HOME/flutter/bin"
+fi
+
+# Fix for Android Studio and other Java programs
+export _JAVA_AWT_WM_NONREPARENTING=1
+
 # Default programs:
 export EDITOR="nvim"
 export TERMINAL="st"
-export BROWSER="iceweasel"
+export BROWSER="firefox"
 
 # ~/ Clean-up:
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -49,9 +65,11 @@ ex=🎯:\
 *.me=✍:\
 *.ms=✍:\
 *.png=🖼:\
+*.PNG=🖼:\
 *.webp=🖼:\
 *.ico=🖼:\
 *.jpg=📸:\
+*.JPG=📸:\
 *.jpe=📸:\
 *.jpeg=📸:\
 *.gif=🖼:\
@@ -120,4 +138,6 @@ ex=🎯:\
 # Switch escape and caps if tty and no passwd required:
 sudo -n loadkeys ${XDG_DATA_HOME:-$HOME/.local/share}/ttymaps.kmap 2>/dev/null
 
-startx
+if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
+	exec startx
+fi

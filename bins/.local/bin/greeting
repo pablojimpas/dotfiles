@@ -20,7 +20,8 @@ echo $greet
 uptime -p
 echo $(uname -n) running $(uname -ro)
 
-echo Root partition usage: $(df -h 2> /dev/null | grep '/dev/mapper' | awk {'print $5'})
+echo Root partition usage: $(df -h 2> /dev/null | awk '/\/$/ {print $5}')
+echo Home partition usage: $(df -h 2> /dev/null | awk '/\/home/ {print $5}')
 
 n=$[$RANDOM % 101]
 if [ $n -ge 80 ];
