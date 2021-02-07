@@ -23,6 +23,11 @@ if [ -d "$HOME/flutter" ] ; then
     PATH="$PATH:$HOME/flutter/bin"
 fi
 
+# Add ruby gems path if exists
+if [ -d "$HOME/.local/share/gem/ruby/2.7.0/bin" ] ; then
+    PATH="$PATH:$HOME/.local/share/gem/ruby/2.7.0/bin"
+fi
+
 # Fix for Android Studio and other Java programs
 export _JAVA_AWT_WM_NONREPARENTING=1
 
