@@ -21,6 +21,7 @@ call plug#begin('~/.config/nvim/plugged')
 " VIM enhancements
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
 
 " Color schemes
 " Plug 'arcticicestudio/nord-vim'
@@ -28,7 +29,6 @@ Plug 'morhetz/gruvbox'
 
 " GUI enhancements
 Plug 'itchyny/lightline.vim'
-Plug 'itchyny/vim-gitbranch'
 Plug 'machakann/vim-highlightedyank'
 Plug 'ap/vim-css-color'
 Plug 'junegunn/goyo.vim'
@@ -93,7 +93,7 @@ let g:lightline = {
       \ },
       \ 'component_function': {
       \   'cocstatus': 'coc#status',
-      \   'gitbranch': 'gitbranch#name',
+      \   'gitbranch': 'FugitiveHead',
       \   'filename': 'LightlineFilename'
       \ },
       \ }
