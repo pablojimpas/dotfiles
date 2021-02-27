@@ -1,4 +1,5 @@
 set nocompatible
+set wildmode=longest,list,full
 filetype off
 let mapleader = "\<Space>"
 
@@ -19,6 +20,7 @@ call plug#begin('~/.config/nvim/plugged')
 
 " VIM enhancements
 Plug 'editorconfig/editorconfig-vim'
+Plug 'tpope/vim-commentary'
 
 " Color schemes
 " Plug 'arcticicestudio/nord-vim'
@@ -29,6 +31,8 @@ Plug 'itchyny/lightline.vim'
 Plug 'itchyny/vim-gitbranch'
 Plug 'machakann/vim-highlightedyank'
 Plug 'ap/vim-css-color'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
 
 " Fuzzy finder
 Plug 'airblade/vim-rooter'
@@ -49,6 +53,19 @@ Plug 'stephpy/vim-yaml'
 call plug#end()
 
 " Deal with colors
+
+let g:limelight_conceal_ctermfg = 'gray'
+let g:limelight_conceal_guifg = 'DarkGray'
+let g:limelight_default_coefficient = 0.5
+let g:limelight_paragraph_span = 1
+" Beginning/end of paragraph
+"   When there's no empty line between the paragraphs
+"   and each paragraph starts with indentation
+let g:limelight_bop = '^\s'
+let g:limelight_eop = '\ze\n^\s'
+" Highlighting priority (default: 10)
+"   Set it to -1 not to overrule hlsearch
+let g:limelight_priority = -1
 
 let gruvbox_contrast_dark = 'hard'
 let gruvbox_invert_selection = '0'
@@ -84,7 +101,7 @@ function! LightlineFilename()
   return expand('%:t') !=# '' ? @% : '[No Name]'
 endfunction
 
-" Use auocmd to force lightline update.
+" Use autocmd to force lightline update.
 autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
 " Quick-save
@@ -292,14 +309,44 @@ nmap <leader>f  <Plug>(coc-format-selected)
 " <leader><leader> toggles between buffers
 nnoremap <leader><leader> <c-^>
 
+" Shortcuts for split navigation
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
 " I can type :help on my own, thanks.
 map <F1> <Esc>
 imap <F1> <Esc>
 
+map <leader>f :Goyo<CR>
+
+function! s:goyo_enter()
+  Limelight
+  let b:quitting = 0
+  let b:quitting_bang = 0
+  autocmd QuitPre <buffer> let b:quitting = 1
+  cabbrev <buffer> q! let b:quitting_bang = 1 <bar> q!
+endfunction
+
+function! s:goyo_leave()
+  Limelight!
+  " Quit Vim if this is the only remaining buffer
+  if b:quitting && len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
+    if b:quitting_bang
+      qa!
+    else
+      qa
+    endif
+  endif
+endfunction
 
 " =============================================================================
 " # Autocommands
 " =============================================================================
+
+autocmd! User GoyoEnter call <SID>goyo_enter()
+autocmd! User GoyoLeave call <SID>goyo_leave()
 
 " Leave paste mode when leaving insert mode
 autocmd InsertLeave * set nopaste
@@ -321,7 +368,6 @@ autocmd BufRead *.pl set filetype=prolog
 
 " Script plugins
 autocmd Filetype html,xml,xsl,php source ~/.config/nvim/scripts/closetag.vim
-
 " =============================================================================
 " # Footer
 " =============================================================================

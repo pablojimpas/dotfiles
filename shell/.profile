@@ -11,7 +11,7 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 # Add dotnet to path if exists
-if [ -d "$HOME/flutter" ] ; then
+if [ -d "$HOME/dotnet" ] ; then
     PATH="$PATH:$HOME/dotnet"
     DOTNET_ROOT=$HOME/dotnet
     PATH="$PATH:$HOME/.dotnet/tools"
@@ -21,6 +21,11 @@ fi
 # Add flutter to path if exists
 if [ -d "$HOME/flutter" ] ; then
     PATH="$PATH:$HOME/flutter/bin"
+fi
+
+# Add go to path if exists
+if [ -d "$HOME/go" ] ; then
+    PATH="$PATH:$HOME/go/bin"
 fi
 
 # Add ruby gems path if exists
