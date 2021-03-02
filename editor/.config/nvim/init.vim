@@ -35,25 +35,24 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 
 " Fuzzy finder
-Plug 'airblade/vim-rooter'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'airblade/vim-rooter'
 
 " Semantic language support
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Syntactic language support
-Plug 'lervag/vimtex'
 Plug 'sheerun/vim-polyglot'
-Plug 'dart-lang/dart-vim-plugin'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'rhysd/vim-clang-format'
-Plug 'stephpy/vim-yaml'
+
+" LaTeX syntax + other features
+Plug 'lervag/vimtex'
 
 call plug#end()
 
 " Deal with colors
 
+" Limelight (aka focused mode) variables
 let g:limelight_conceal_ctermfg = 'gray'
 let g:limelight_conceal_guifg = 'DarkGray'
 let g:limelight_default_coefficient = 0.5
@@ -67,9 +66,11 @@ let g:limelight_eop = '\ze\n^\s'
 "   Set it to -1 not to overrule hlsearch
 let g:limelight_priority = -1
 
+" Gruvbox theme variables
 let gruvbox_contrast_dark = 'hard'
 let gruvbox_invert_selection = '0'
 
+" Nord theme variables
 " let g:nord_cursor_line_number_background = 1
 " let g:nord_bold_vertical_split_line = 1
 " let g:nord_uniform_diff_background = 1
@@ -100,15 +101,6 @@ let g:lightline = {
 function! LightlineFilename()
   return expand('%:t') !=# '' ? @% : '[No Name]'
 endfunction
-
-" Use autocmd to force lightline update.
-autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
-
-" Quick-save
-nmap <leader>w :w<CR>
-
-" Open hotkey
-map <C-p> :Files<CR>
 
 " Rust
 let g:rustfmt_autosave = 1
@@ -212,12 +204,18 @@ set shortmess+=c
 " =============================================================================
 " # Keyboard shortcuts
 " =============================================================================
+" Quick-save
+nmap <leader>w :w<CR>
+
+" Open hotkey
+map <C-p> :Files<CR>
+
 " Move selected lines up and down
 vnoremap K :m '<-2<CR>gv=gv
 vnoremap J :m '>+1<CR>gv=gv
 " Ctrl+h to stop searching
-vnoremap <C-h> :nohlsearch<cr>
-nnoremap <C-h> :nohlsearch<cr>
+vnoremap <C-s> :nohlsearch<cr>
+nnoremap <C-s> :nohlsearch<cr>
 
 " Jump to start and end of line using the home row keys
 map H ^
@@ -368,11 +366,10 @@ autocmd BufRead *.pl set filetype=prolog
 
 " Script plugins
 autocmd Filetype html,xml,xsl,php source ~/.config/nvim/scripts/closetag.vim
+
+" Use autocmd to force lightline update.
+autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
+
 " =============================================================================
 " # Footer
 " =============================================================================
-
-" nvim
-if has('nvim')
-	runtime! plugin/python_setup.vim
-endif

@@ -6,6 +6,6 @@ augroup filetypedetect
   autocmd Filetype text setlocal spell tw=72 colorcolumn=73
   autocmd Filetype markdown setlocal spell tw=72 colorcolumn=73
   " clang format
-  autocmd FileType c,cpp ClangFormatAutoEnable
+  " autocmd FileType c,cpp ClangFormatAutoEnable
 augroup END
 
