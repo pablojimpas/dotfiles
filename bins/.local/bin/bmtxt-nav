@@ -12,5 +12,5 @@ while [ -d "$current_nav_path" ]; do
 	current_nav_path="${current_nav_path}/${selection}";
 done
 
-cat $current_nav_path | dmenu -l $(cat $current_nav_path | wc -l) | cut -d ' ' -f 1 | xargs -I '{}' $BROWSER {} || exit 1
+cat $current_nav_path | sort | awk NF | dmenu -l $(cat $current_nav_path | wc -l) | cut -d ' ' -f 1 | xargs -I '{}' $BROWSER {} || exit 1
 
