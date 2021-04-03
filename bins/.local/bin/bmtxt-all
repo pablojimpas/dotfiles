@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# set bookmarks root path
+BM_ROOT_PATH=$HOME/hdd/sync/doc/links
+
+find $BM_ROOT_PATH -type f -exec cat {} + | dmenu -l 32 | cut -d ' ' -f 1 | xargs -I '{}' $BROWSER {} || exit 1

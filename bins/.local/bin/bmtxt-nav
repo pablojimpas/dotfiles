@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# set bookmarks root path
+BM_ROOT_PATH=$HOME/hdd/sync/doc/links
+
+selection="$(ls $BM_ROOT_PATH | dmenu -l $(ls $BM_ROOT_PATH | wc -l))" || exit 1
+
+current_nav_path="${BM_ROOT_PATH}/${selection}"
+
+while [ -d "$current_nav_path" ]; do
+	selection="$(ls $current_nav_path | dmenu -l $(ls $current_nav_path | wc -l))" || exit 1
+	current_nav_path="${current_nav_path}/${selection}";
+done
+
+cat $current_nav_path | dmenu -l $(cat $current_nav_path | wc -l) | cut -d ' ' -f 1 | xargs -I '{}' $BROWSER {} || exit 1
+
