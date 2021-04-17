@@ -1,6 +1,6 @@
 [user]
 	signingkey = D3ED161FF0E3DEA9
-	name = pablojimpas
+	name = Pablo Jiménez Pascual
 	email = pablo@jimpas.me
 [commit]
 	gpgsign = true
@@ -8,3 +8,9 @@
 	editor = nvim
 [credential]
 	helper = cache --timeout=3600
+[sendemail]
+	smtpserver = mail.jimpas.me
+	smtpuser = pablo@jimpas.me
+	smtpencryption = tls
+	smtpserverport = 587
+	annotate = yes
