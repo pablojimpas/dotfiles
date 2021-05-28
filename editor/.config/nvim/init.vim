@@ -24,8 +24,8 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 
 " Color schemes
-" Plug 'arcticicestudio/nord-vim'
-Plug 'morhetz/gruvbox'
+Plug 'arcticicestudio/nord-vim'
+" Plug 'morhetz/gruvbox'
 
 " GUI enhancements
 Plug 'itchyny/lightline.vim'
@@ -33,6 +33,7 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'ap/vim-css-color'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
+Plug 'scrooloose/nerdtree'
 
 " Fuzzy finder
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -44,6 +45,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Syntactic language support
 Plug 'sheerun/vim-polyglot'
+
+" C# intellisense and more
+Plug 'OmniSharp/omnisharp-vim'
 
 " LaTeX syntax + other features
 Plug 'lervag/vimtex'
@@ -67,19 +71,19 @@ let g:limelight_eop = '\ze\n^\s'
 let g:limelight_priority = -1
 
 " Gruvbox theme variables
-let gruvbox_contrast_dark = 'hard'
-let gruvbox_invert_selection = '0'
+" let gruvbox_contrast_dark = 'hard'
+" let gruvbox_invert_selection = '0'
 
 " Nord theme variables
-" let g:nord_cursor_line_number_background = 1
-" let g:nord_bold_vertical_split_line = 1
-" let g:nord_uniform_diff_background = 1
-" let g:nord_italic = 1
-" let g:nord_italic_comments = 1
-" let g:nord_underline = 1
+let g:nord_cursor_line_number_background = 1
+let g:nord_bold_vertical_split_line = 1
+let g:nord_uniform_diff_background = 1
+let g:nord_italic = 1
+let g:nord_italic_comments = 1
+let g:nord_underline = 1
 
-colorscheme gruvbox
-set background=dark
+colorscheme nord
+" set background=dark
 syntax on
 
 if !has('gui_running')
@@ -87,7 +91,7 @@ if !has('gui_running')
 endif
 
 let g:lightline = {
-      \ 'colorscheme': 'gruvbox',
+      \ 'colorscheme': 'nord',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'cocstatus', 'gitbranch', 'readonly', 'filename', 'modified' ] ]
@@ -209,6 +213,8 @@ nmap <leader>w :w<CR>
 
 " Open hotkey
 map <C-p> :Files<CR>
+
+map <C-o> :NERDTreeToggle<CR>
 
 " Move selected lines up and down
 vnoremap K :m '<-2<CR>gv=gv
