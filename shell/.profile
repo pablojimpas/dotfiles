@@ -24,14 +24,18 @@ if [ -d "$HOME/flutter" ] ; then
 fi
 
 # Add go to path if exists
-if [ -d "$HOME/go" ] ; then
-    PATH="$PATH:$HOME/go/bin"
+export GOPATH=$HOME/.go
+if [ -d "$HOME/.go" ] ; then
+    PATH="$PATH:$HOME/.go/bin"
 fi
 
 # Add ruby gems path if exists
 if [ -d "$HOME/.local/share/gem/ruby/2.7.0/bin" ] ; then
     PATH="$PATH:$HOME/.local/share/gem/ruby/2.7.0/bin"
 fi
+
+# Dircolors
+test -r "~/.dir_colors" && eval $(dircolors ~/.dir_colors)
 
 # Fix for Android Studio and other Java programs
 export _JAVA_AWT_WM_NONREPARENTING=1
