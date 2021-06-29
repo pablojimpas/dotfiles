@@ -4,8 +4,8 @@
 
 # For non-systemd init systems.
 case "$(readlink -f /sbin/init)" in
-	*runit*) hib="sudo -A zzz" ;;
-	*openrc*) reb="sudo -A openrc-shutdown -r now"; shut="sudo -A openrc-shutdown -p now" ;;
+	*runit*) hib="doas -n zzz" ;;
+	*openrc*) reb="doas -n openrc-shutdown -r now"; shut="doas openrc-shutdown -p now" ;;
 esac
 
 cmds="\
@@ -13,8 +13,8 @@ cmds="\
 🚪 leave dwm	kill -TERM $(pgrep -u $USER "\bdwm$")
 ♻ renew dwm	kill -HUP $(pgrep -u $USER "\bdwm$")
 🐻 hibernate	slock ${hib:-systemctl suspend-then-hibernate -i}
-🔃 reboot	${reb:-sudo -A reboot}
-🖥 shutdown	${shut:-sudo -A shutdown -h now}"
+🔃 reboot	${reb:-doas -n reboot}
+🖥️ shutdown	${shut:-doas -n shutdown -h now}"
 
 choice="$(echo "$cmds" | cut -d'	' -f 1 | dmenu)" || exit 1
 
