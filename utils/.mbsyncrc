@@ -1,0 +1,26 @@
+
+IMAPStore pablo@jimpas.me-remote
+Host mail.jimpas.me
+Port 993
+User pablo
+PassCmd "pass pablo@jimpas.me"
+AuthMechs LOGIN
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+MaildirStore pablo@jimpas.me-local
+Subfolders Verbatim
+Path /home/polo/.local/share/mail/pablo@jimpas.me/
+Inbox /home/polo/.local/share/mail/pablo@jimpas.me/INBOX
+
+Channel pablo@jimpas.me
+Expunge Both
+Master :pablo@jimpas.me-remote:
+Slave :pablo@jimpas.me-local:
+Patterns * !"[Gmail]/All Mail"
+Create Both
+SyncState *
+MaxMessages 0
+ExpireUnread no
+# End profile
+
