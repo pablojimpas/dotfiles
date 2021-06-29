@@ -1,13 +1,14 @@
-https://www.archlinux.org/feeds/news/ "tech"
-https://artixlinux.org/feed.php "tech"
-https://blog.elementary.io/feed.xml "tech"
-https://puri.sm/feed/ "tech"
-https://www.fsf.org/static/fsforg/rss/news.xml
-https://www.fsf.org/static/fsforg/rss/blogs.xml
-https://www.fsf.org/static/fsforg/rss/events.xml
-https://fsfe.org/news/news.en.rss "tech"
-https://librelounge.org/rss-feed-ogg.rss "tech"
-https://fossandcrafts.org/rss-feed-ogg.rss "tech"
+https://www.archlinux.org/feeds/news/ "free software"
+https://artixlinux.org/feed.php "free software"
+https://blog.elementary.io/feed.xml "free software"
+https://puri.sm/feed/ "free software"
+https://stallman.org/rss/rss.xml "free software"
+https://www.fsf.org/static/fsforg/rss/news.xml "free software"
+https://www.fsf.org/static/fsforg/rss/blogs.xml "free software"
+https://www.fsf.org/static/fsforg/rss/events.xml "free software"
+https://fsfe.org/news/news.en.rss "free software"
+https://librelounge.org/rss-feed-ogg.rss "free software"
+https://fossandcrafts.org/rss-feed-ogg.rss "free software"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCO_augYhnO7tF-d4JbSXFuQ Bertram - Craft and Wilderness
 https://www.youtube.com/feeds/videos.xml?channel_id=UCcrSw79VCd4sSguy9D2HufQ Colgados del Aro
 https://www.youtube.com/feeds/videos.xml?channel_id=UCy5znSnfMsDwaLlROnZ7Qbg Dot CSV
