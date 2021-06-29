@@ -19,8 +19,8 @@ if [ -d "$HOME/dotnet" ] ; then
 fi
 
 # Add flutter to path if exists
-if [ -d "$HOME/flutter" ] ; then
-    PATH="$PATH:$HOME/flutter/bin"
+if [ -d "$HOME/.flutter-git" ] ; then
+    PATH="$PATH:$HOME/.flutter-git/bin"
 fi
 
 # Add go to path if exists
