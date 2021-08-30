@@ -33,7 +33,6 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'ap/vim-css-color'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
-Plug 'scrooloose/nerdtree'
 
 " Fuzzy finder
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -213,8 +212,6 @@ nmap <leader>w :w<CR>
 
 " Open hotkey
 map <C-p> :Files<CR>
-
-map <C-o> :NERDTreeToggle<CR>
 
 " Move selected lines up and down
 vnoremap K :m '<-2<CR>gv=gv
