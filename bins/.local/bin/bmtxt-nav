@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # set bookmarks root path
-BM_ROOT_PATH=$HOME/hdd/sync/doc/links
+BM_ROOT_PATH=$HOME/doc/links
 
 selection="$(ls $BM_ROOT_PATH | dmenu -i -l $(ls $BM_ROOT_PATH | wc -l))" || exit 1
 

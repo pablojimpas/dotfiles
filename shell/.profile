@@ -53,7 +53,7 @@ export GTK2_RC_FILES="${XDG_CONFIG_HOME:-$HOME/.config}/gtk-2.0/gtkrc-2.0"
 export INPUTRC="$HOME/.inputrc"
 export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
 export GPG_TTY=$(tty)
-export PASSWORD_STORE_DIR=~/hdd/sync/doc/passwords
+export PASSWORD_STORE_DIR=~/doc/passwords
 
 # Other program settings:
 export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
