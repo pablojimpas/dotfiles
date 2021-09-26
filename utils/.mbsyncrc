@@ -24,3 +24,55 @@ MaxMessages 0
 ExpireUnread no
 # End profile
 
+
+IMAPStore pablo@jimpas.me-remote
+Host mail.jimpas.me
+Port 993
+User pablo@jimpas.me
+PassCmd "pass pablo@jimpas.me"
+AuthMechs LOGIN
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+MaildirStore pablo@jimpas.me-local
+Subfolders Verbatim
+Path /home/polo/.local/share/mail/pablo@jimpas.me/
+Inbox /home/polo/.local/share/mail/pablo@jimpas.me/INBOX
+
+Channel pablo@jimpas.me
+Expunge Both
+Far :pablo@jimpas.me-remote:
+Near :pablo@jimpas.me-local:
+Patterns * !"[Gmail]/All Mail"
+Create Both
+SyncState *
+MaxMessages 0
+ExpireUnread no
+# End profile
+
+
+IMAPStore pablo.jimenez.pascual@alumnos.uva.es-remote
+Host buzones.alumnos.uva.es
+Port 993
+User e70831970c
+PassCmd "pass pablo.jimenez.pascual@alumnos.uva.es"
+AuthMechs LOGIN
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+MaildirStore pablo.jimenez.pascual@alumnos.uva.es-local
+Subfolders Verbatim
+Path /home/polo/.local/share/mail/pablo.jimenez.pascual@alumnos.uva.es/
+Inbox /home/polo/.local/share/mail/pablo.jimenez.pascual@alumnos.uva.es/INBOX
+
+Channel pablo.jimenez.pascual@alumnos.uva.es
+Expunge Both
+Far :pablo.jimenez.pascual@alumnos.uva.es-remote:
+Near :pablo.jimenez.pascual@alumnos.uva.es-local:
+Patterns * !"[Gmail]/All Mail"
+Create Both
+SyncState *
+MaxMessages 0
+ExpireUnread no
+# End profile
+
