@@ -13,3 +13,6 @@
 [submodule "utils/.config/mpv/scripts/mpvSockets"]
 	path = utils/.config/mpv/scripts/mpvSockets
 	url = https://github.com/wis/mpvSockets.git
+[submodule "shell/.local/src/ohmyksh"]
+	path = shell/.local/src/ohmyksh
+	url = git@github.com:pablojimpas/ohmyksh.git
