@@ -1,14 +1,37 @@
-https://www.archlinux.org/feeds/news/ "free software"
-https://artixlinux.org/feed.php "free software"
-https://blog.elementary.io/feed.xml "free software"
-https://puri.sm/feed/ "free software"
-https://stallman.org/rss/rss.xml "free software"
-https://www.fsf.org/static/fsforg/rss/news.xml "free software"
-https://www.fsf.org/static/fsforg/rss/blogs.xml "free software"
-https://www.fsf.org/static/fsforg/rss/events.xml "free software"
-https://fsfe.org/news/news.en.rss "free software"
-https://librelounge.org/rss-feed-ogg.rss "free software"
-https://fossandcrafts.org/rss-feed-ogg.rss "free software"
+https://www.archlinux.org/feeds/news/ Arch Linux
+https://artixlinux.org/feed.php Artix Linux
+https://blog.elementary.io/feed.xml elementary OS
+https://puri.sm/feed/ Purism
+https://stallman.org/rss/rss.xml Richard Stallman
+https://www.fsf.org/static/fsforg/rss/news.xml FSF News
+https://www.fsf.org/static/fsforg/rss/blogs.xml FSF Blogs
+https://www.fsf.org/static/fsforg/rss/events.xml FSF Events
+https://fsfe.org/news/news.en.rss FSFE News
+https://librelounge.org/rss-feed-ogg.rss Libre Lounge Podcast
+https://fossandcrafts.org/rss-feed-ogg.rss FOSS and Crafts Podcast 
+https://landchad.net/rss.xml Landchad
+https://notrelated.xyz/rss Not Related!
+https://lukesmith.xyz/peertube Luke Smith Videos
+https://lukesmith.xyz/rss.xml Luke Smith
+https://ariadnavigo.xyz/posts/index.xml Ariadna Vigo
+https://www.alexedwards.net/static/feed.rss Alex Edwards
+https://drewdevault.com/blog/index.xml Drew Devault
+https://benhoyt.com/writings/rss.xml Ben Hoyt
+https://eli.thegreenplace.net/feeds/all.atom.xml Eli Bendersky's Website
+https://rudism.com/rss.xml Rudism's Blog
+https://victoria.dev/blog/index.xml Victoria Drake's Blog
+https://nullprogram.com/feed/ Chris Wellons
+https://undeadly.org/cgi?action=rss&full=true OpenBSD Journal
+https://webzine.puffy.cafe/atom.xml OpenBSD Webzine
+https://feeds.fireside.fm/bsdnow/rss BSD Now
+https://bsdsec.net/articles.atom BSDSec
+https://www.cambus.net/atom.xml Cambus' Blog
+https://dataswamp.org/~solene/rss.xml Solene's Blog
+https://deftly.net/rss.xml Aaron Bieber's Blog
+https://kernelpanic.life/rss.xml Kernel Panic
+https://briancallahan.net/blog/feed.xml Brian Robert Callahan
+https://dataswamp.org/~lich/rss.xml Lich's Blog
+https://discoverbsd.com/feeds/posts/default DiscoverBSD
 https://www.youtube.com/feeds/videos.xml?channel_id=UCO_augYhnO7tF-d4JbSXFuQ Bertram - Craft and Wilderness
 https://www.youtube.com/feeds/videos.xml?channel_id=UCcrSw79VCd4sSguy9D2HufQ Colgados del Aro
 https://www.youtube.com/feeds/videos.xml?channel_id=UCy5znSnfMsDwaLlROnZ7Qbg Dot CSV
@@ -20,7 +43,5 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCfYqPsgBD_xmxmcN5foRjhA Yog
 https://www.youtube.com/feeds/videos.xml?channel_id=UCVGtVSdqWtVWiekjXlM4qcA Óbila TV
 https://www.youtube.com/feeds/videos.xml?channel_id=UCVls1GmFKf6WlTraIb_IaJg DistroTube
 https://www.youtube.com/feeds/videos.xml?channel_id=UCwd5VFu4KoJNjkWJZMFJGHQ Jacob Sorber
+https://www.youtube.com/feeds/videos.xml?channel_id=UCJetJ7nDNLlEzDLXv7KIo0w Gavin Freeborn 
 https://www.youtube.com/feeds/videos.xml?channel_id=UC7YOGHUfC1Tb6E4pudI9STA Mental Outlaw
-https://videos.lukesmith.xyz/feeds/videos.xml?sort=-publishedAt Luke Smith Videos
-https://lukesmith.xyz/rss.xml Luke Smith
-
