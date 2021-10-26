@@ -40,8 +40,10 @@ test -r "~/.dir_colors" && eval $(dircolors ~/.dir_colors)
 # Fix for Android Studio and other Java programs
 export _JAVA_AWT_WM_NONREPARENTING=1
 
+export ENV=$HOME/.kshrc
+
 # Default programs:
-export EDITOR="nvim"
+export EDITOR="vim"
 export TERMINAL="st"
 export BROWSER="librewolf"
 
