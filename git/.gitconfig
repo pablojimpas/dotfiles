@@ -5,7 +5,7 @@
 [commit]
 	gpgsign = true
 [core]
-	editor = nvim
+	editor = vim
 [credential]
 	helper = cache --timeout=3600
 [sendemail]
@@ -16,3 +16,8 @@
 	annotate = yes
 [init]
 	defaultBranch = master
+[alias]
+	st = status
+	ci = commit
+	br = branch
+	co = checkout
