@@ -16,3 +16,6 @@
 [submodule "shell/.local/src/ohmyksh"]
 	path = shell/.local/src/ohmyksh
 	url = git@github.com:pablojimpas/ohmyksh.git
+[submodule "utils/.local/src/hosts"]
+	path = utils/.local/src/hosts
+	url = https://pedantic.software/git/~syg/hosts

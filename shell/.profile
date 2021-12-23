@@ -23,6 +23,11 @@ if [ -d "$HOME/.flutter-git" ] ; then
     PATH="$PATH:$HOME/.flutter-git/bin"
 fi
 
+# Add pub to path if exists
+if [ -d "$HOME/.pub-cache" ] ; then
+    PATH="$PATH":"$HOME/.pub-cache/bin"
+fi
+
 # Add go to path if exists
 export GOPATH=$HOME/.go
 if [ -d "$HOME/.go" ] ; then
@@ -67,6 +72,10 @@ export LESS_TERMCAP_se="$(printf '%b' '[0m')"
 export LESS_TERMCAP_us="$(printf '%b' '[1;32m')"
 export LESS_TERMCAP_ue="$(printf '%b' '[0m')"
 export LESSOPEN="| /usr/bin/highlight -O ansi %s 2>/dev/null"
+
+# For local development only
+export MYSQL_DB_USERNAME="root"
+export MYSQL_DB_PASSWORD="password"
 
 # This is the list for lf icons:
 export LF_ICONS="di=📁:\

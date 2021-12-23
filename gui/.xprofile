@@ -6,16 +6,20 @@
 /usr/bin/pipewire &
 /usr/bin/pipewire-pulse &
 /usr/bin/pipewire-media-session &
-setxkbmap es &		# Spanish layout in X Org
 remaps &		# Run the remaps script, switching caps/esc and more
 setbg &			# Set the background with the setbg script
-# xrdb ~/.Xresources &	# To use Xresources colors/settings on startup
-xcompmgr &		# Transparency with xcompmgr
-dunst &			# Notifications with dunst
+#xrdb ~/.Xresources & xrdbpid=$!	# Uncomment to use Xresources colors/settings on startup
 xset r rate 300 50 &	# Speed xrate up
 xset b off		# Turn off Bell
+setxkbmap es &		# Spanish layout in X Org
+xrandr --dpi 96	&	# Explicit DPI setting for X11
+xcompmgr &		# Transparency with xcompmgr
+dunst &			# Notifications with dunst
 unclutter &		# Remove mouse when idle
-syncthing -no-browser &	# Autostart syncthing
 redshift &		# Blue light filter
 mpd &			# Music player daemon
+syncthing -no-browser &	# Autostart syncthing
 powertop --auto-tune &	# Power saving
+
+# Ensure that xrdb has finished running before moving on to start the WM/DE.
+[ -n "$xrdbpid" ] && wait "$xrdbpid"
