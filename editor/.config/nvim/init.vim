@@ -24,8 +24,8 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 
 " Color schemes
-Plug 'arcticicestudio/nord-vim'
-" Plug 'morhetz/gruvbox'
+" Plug 'arcticicestudio/nord-vim'
+Plug 'morhetz/gruvbox'
 
 " GUI enhancements
 Plug 'itchyny/lightline.vim'
@@ -70,18 +70,18 @@ let g:limelight_eop = '\ze\n^\s'
 let g:limelight_priority = -1
 
 " Gruvbox theme variables
-" let gruvbox_contrast_dark = 'hard'
-" let gruvbox_invert_selection = '0'
+let gruvbox_contrast_dark = 'hard'
+let gruvbox_invert_selection = '0'
 
 " Nord theme variables
-let g:nord_cursor_line_number_background = 1
-let g:nord_bold_vertical_split_line = 1
-let g:nord_uniform_diff_background = 1
-let g:nord_italic = 1
-let g:nord_italic_comments = 1
-let g:nord_underline = 1
+" let g:nord_cursor_line_number_background = 1
+" let g:nord_bold_vertical_split_line = 1
+" let g:nord_uniform_diff_background = 1
+" let g:nord_italic = 1
+" let g:nord_italic_comments = 1
+" let g:nord_underline = 1
 
-colorscheme nord
+colorscheme gruvbox
 " set background=dark
 syntax on
 
@@ -90,7 +90,7 @@ if !has('gui_running')
 endif
 
 let g:lightline = {
-      \ 'colorscheme': 'nord',
+      \ 'colorscheme': 'gruvbox',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'cocstatus', 'gitbranch', 'readonly', 'filename', 'modified' ] ]

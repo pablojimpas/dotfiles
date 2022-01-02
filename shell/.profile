@@ -48,9 +48,12 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 export ENV=$HOME/.kshrc
 
 # Default programs:
-export EDITOR="vim"
+export EDITOR="nvim"
 export TERMINAL="st"
-export BROWSER="librewolf"
+export BROWSER="brave"
+
+# Trick flutter command line tool
+export CHROME_EXECUTABLE="brave"
 
 # ~/ Clean-up:
 export XDG_CONFIG_HOME="$HOME/.config"
