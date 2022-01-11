@@ -9,6 +9,7 @@ map J zoom out
 map i recolor
 map p print
 
+set sandbox none
 set recolor true
 set selection-clipboard clipboard
 set statusbar-h-padding 0
