@@ -45,10 +45,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Syntactic language support
 Plug 'sheerun/vim-polyglot'
 
-" C# intellisense and more
+" Specific languages
 Plug 'OmniSharp/omnisharp-vim'
-
-" LaTeX syntax + other features
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'lervag/vimtex'
 
 call plug#end()
@@ -70,7 +69,7 @@ let g:limelight_eop = '\ze\n^\s'
 let g:limelight_priority = -1
 
 " Gruvbox theme variables
-let gruvbox_contrast_dark = 'hard'
+let gruvbox_contrast_light = 'hard'
 let gruvbox_invert_selection = '0'
 
 " Nord theme variables
@@ -82,7 +81,7 @@ let gruvbox_invert_selection = '0'
 " let g:nord_underline = 1
 
 colorscheme gruvbox
-" set background=dark
+set background=light
 syntax on
 
 if !has('gui_running')
@@ -357,6 +356,9 @@ if has("autocmd")
   " https://stackoverflow.com/questions/31449496/vim-ignore-specifc-file-in-autocommand
   au BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
+
+" Auto-format and add missing imports
+autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
 
 " Follow Rust code style rules
 au Filetype rust source ~/.config/nvim/scripts/spacetab.vim

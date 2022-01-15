@@ -10,7 +10,6 @@ map i recolor
 map p print
 
 set sandbox none
-set recolor true
 set selection-clipboard clipboard
 set statusbar-h-padding 0
 set statusbar-v-padding 0
@@ -55,5 +54,5 @@ set render-loading-fg           "#ebdbb2" # fg
 # Recolor book content's color
 set recolor-lightcolor          "#282828" # bg
 set recolor-darkcolor           "#ebdbb2" # fg
-set recolor                     "true"
+# set recolor                     "true"
 # set recolor-keephue             true      # keep original color
