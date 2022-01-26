@@ -1,0 +1,3 @@
+#!/bin/sh
+
+find "$FAV_ROOT_PATH" -type f -exec grep -h '@' {} + | sort | dmenu -i -l 40 -it '@' | cut -d ' ' -f 1 | xargs -I '{}' "$BROWSER" {} || exit 1

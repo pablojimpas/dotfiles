@@ -1,6 +1,0 @@
-#!/bin/sh
-
-# set bookmarks root path
-BM_ROOT_PATH=$HOME/doc/links
-
-find $BM_ROOT_PATH -type f -exec cat {} + | sort | awk NF | dmenu -i -l 40 | cut -d ' ' -f 1 | xargs -I '{}' $BROWSER {} || exit 1

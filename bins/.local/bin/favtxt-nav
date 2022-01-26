@@ -1,0 +1,13 @@
+#!/bin/sh
+
+selection="$(ls "$FAV_ROOT_PATH" | dmenu -i -l "$(ls "$FAV_ROOT_PATH" | wc -l)")" || exit 1
+
+current_nav_path="${FAV_ROOT_PATH}/${selection}"
+
+while [ -d "$current_nav_path" ]; do
+	selection="$(ls "$current_nav_path" | dmenu -i -l "$(ls "$current_nav_path" | wc -l)")" || exit 1
+	current_nav_path="${current_nav_path}/${selection}";
+done
+
+sort "$current_nav_path" | awk NF | dmenu -i -l "$(wc -l "$current_nav_path")" | cut -d ' ' -f 1 | xargs -I '{}' "$BROWSER" {} || exit 1
+

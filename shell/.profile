@@ -64,6 +64,7 @@ export INPUTRC="$HOME/.inputrc"
 export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
 export GPG_TTY=$(tty)
 export PASSWORD_STORE_DIR=~/doc/passwords
+export FAV_ROOT_PATH=~/doc/links
 
 # Other program settings:
 export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
