@@ -1,3 +1,5 @@
+https://cprss.s3.amazonaws.com/golangweekly.com.xml Golang Weekly
+https://nakabonne.dev/index.xml Ryo Nakao
 https://www.archlinux.org/feeds/news/ Arch Linux
 https://artixlinux.org/feed.php Artix Linux
 https://blog.elementary.io/feed.xml elementary OS
@@ -19,6 +21,8 @@ https://www.alexedwards.net/static/feed.rss Alex Edwards
 https://research.swtch.com/feed.atom Russ Cox
 https://ar.al/index.xml Aral Balkan
 https://unixsheikh.com/feed.rss Unixsheikh
+https://codemadness.org/rss_content.xml Codemadness
+https://momi.ca/feed.xml Anjandev Momi's Homepage
 https://drewdevault.com/blog/index.xml Drew Devault
 https://benhoyt.com/writings/rss.xml Ben Hoyt
 https://sookocheff.com/index.xml Kevin Sookocheff

@@ -104,6 +104,13 @@ function! LightlineFilename()
   return expand('%:t') !=# '' ? @% : '[No Name]'
 endfunction
 
+" Completion
+" Give more space for displaying messages.
+set cmdheight=2
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=100
+
 " Rust
 let g:rustfmt_autosave = 1
 let g:rust_clip_command = 'xclip -selection clipboard'
@@ -113,12 +120,27 @@ let g:dart_style_guide = 2
 let g:dart_format_on_save = 1
 let dart_html_in_string=v:true
 
-" Completion
-" Give more space for displaying messages.
-set cmdheight=2
-" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
-" delays and poor user experience.
-set updatetime=300
+" Go
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_variable_declarations = 1
+let g:go_highlight_variable_assignments = 1
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_diagnostic_errors = 1
+let g:go_highlight_diagnostic_warnings = 1
+let g:go_metalinter_autosave = 1
+let g:go_metalinter_command = "golangci-lint"
+let g:go_list_autoclose = 1
+au FileType go nmap <leader>t :GoTest!<CR>
+au FileType go nmap <leader>v :GoVet!<CR>
+au FileType go nmap <leader>b :GoBuild!<CR>
+au FileType go nmap <leader>c :GoCoverageToggle<CR>
+au FileType go nmap <leader>i :GoInfo<CR>
+au FileType go nmap <leader>l :GoMetaLinter!<CR>
 
 " LaTeX
 let g:tex_flavor='latex'
@@ -127,11 +149,11 @@ let g:vimtex_quickfix_mode=0
 set conceallevel=1
 let g:tex_conceal='abdmg'
 
-
 " =============================================================================
 " # Editor settings
 " =============================================================================
 filetype plugin indent on
+set autowrite
 set autoindent
 set timeoutlen=300 " http://stackoverflow.com/questions/2158516/delay-before-o-opens-a-new-line
 set encoding=utf-8
