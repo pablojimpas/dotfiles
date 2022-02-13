@@ -50,7 +50,7 @@ export ENV=$HOME/.kshrc
 # Default programs:
 export EDITOR="nvim"
 export TERMINAL="st"
-export BROWSER="brave"
+export BROWSER="librewolf"
 
 # Trick flutter command line tool
 export CHROME_EXECUTABLE="brave"
@@ -65,6 +65,8 @@ export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
 export GPG_TTY=$(tty)
 export PASSWORD_STORE_DIR=~/doc/passwords
 export FAV_ROOT_PATH=~/doc/links
+export SFEED_URL_FILE="$HOME/.sfeed/urls"
+[ -f "$SFEED_URL_FILE" ] || touch "$SFEED_URL_FILE"
 
 # Other program settings:
 export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"

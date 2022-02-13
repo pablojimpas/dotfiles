@@ -1,15 +1,16 @@
 #!/bin/sh
 
-# Set as a cron job to check for new RSS entries for newsboat.
-# If newsboat is open, sends it an "R" key to refresh.
+# Set as a cron job to check for new RSS entries for sfeed.
+# If sfeed_curses is open, sends it an "R" key to refresh.
 
 /usr/bin/notify-send "📰 Updating RSS feeds..."
 
-pgrep -f newsboat$ && /usr/bin/xdotool key --window "$(/usr/bin/xdotool search --name "^newsboat$")" R && exit
-
 echo 🔃 > /tmp/newsupdate
 pkill -RTMIN+6 "${STATUSBAR:-dwmblocks}"
-/usr/bin/newsboat -x reload
+/usr/bin/sfeed_update
 rm -f /tmp/newsupdate
 pkill -RTMIN+6 "${STATUSBAR:-dwmblocks}"
+
+pgrep sfeed_curses && /usr/bin/xdotool key --window "$(/usr/bin/xdotool search --name "sfeed_curses$")" R && exit
+
 /usr/bin/notify-send "📰 RSS feed update complete."

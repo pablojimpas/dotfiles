@@ -1,0 +1,16 @@
+#!/bin/sh
+LC_ALL=C awk -F '\t' '
+NF == 1 {
+	u[$0]=1; # lookup table of URLs
+	next;
+}
+# below is a feed file
+{
+	total++;
+	if (u[$3])
+	read++
+}
+END {
+	print (total - read)
+}
+' ~/.sfeed/urls ~/.sfeed/feeds/*
