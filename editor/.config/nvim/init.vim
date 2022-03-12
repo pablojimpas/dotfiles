@@ -70,7 +70,7 @@ let g:limelight_eop = '\ze\n^\s'
 let g:limelight_priority = -1
 
 " Gruvbox theme variables
-let gruvbox_contrast_light = 'hard'
+let gruvbox_contrast_dark = 'hard'
 let gruvbox_invert_selection = '0'
 
 " Nord theme variables
@@ -82,7 +82,7 @@ let gruvbox_invert_selection = '0'
 " let g:nord_underline = 1
 
 colorscheme gruvbox
-set background=light
+set background=dark
 syntax on
 
 if !has('gui_running')
