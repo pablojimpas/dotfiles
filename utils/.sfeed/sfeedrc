@@ -26,6 +26,7 @@ feeds() {
 	feed 'fsfe.org' 'https://fsfe.org/news/news.en.rss'
 	feed 'geoghegan.ca' 'https://geoghegan.ca/pub/rss/feed.rss'
 	feed 'golangweekly.com' 'https://cprss.s3.amazonaws.com/golangweekly.com.xml'
+	feed 'guillaume.bernos.dev' 'https://guillaume.bernos.dev/rss/'
 	feed 'hosakacorp.net' 'https://hosakacorp.net/rss.xml'
 	feed 'jcs.org' 'https://jcs.org/rss'
 	feed 'jimpas.me' 'https://jimpas.me/blog/rss.xml'

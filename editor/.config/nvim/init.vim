@@ -13,9 +13,9 @@ if ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autolo
 	autocmd VimEnter * PlugInstall
 endif
 
-" =============================================================================
+" ==============================================================================
 " # PLUGINS
-" =============================================================================
+" ==============================================================================
 call plug#begin('~/.config/nvim/plugged')
 
 " VIM enhancements
@@ -43,12 +43,13 @@ Plug 'airblade/vim-rooter'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Syntactic language support
-Plug 'sheerun/vim-polyglot'
+" Plug 'sheerun/vim-polyglot'
 
 " Specific languages
 Plug 'OmniSharp/omnisharp-vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'lervag/vimtex'
+Plug 'aklt/plantuml-syntax'
 
 call plug#end()
 
@@ -93,6 +94,9 @@ let g:lightline = {
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'cocstatus', 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component': {
+      \   'lineinfo': '%3l:%-2v',
       \ },
       \ 'component_function': {
       \   'cocstatus': 'coc#status',
@@ -149,9 +153,9 @@ let g:vimtex_quickfix_mode=0
 set conceallevel=1
 let g:tex_conceal='abdmg'
 
-" =============================================================================
+" ==============================================================================
 " # Editor settings
-" =============================================================================
+" ==============================================================================
 filetype plugin indent on
 set autowrite
 set autoindent
@@ -162,8 +166,8 @@ set noshowmode
 set hidden
 set nowrap
 set nojoinspaces
-" Always draw sign column. Prevent buffer moving when adding/deleting sign.
-set signcolumn=yes
+" Don't waste space with an extra thick column on the left 
+set signcolumn=number
 
 " Sane splits
 set splitright
@@ -187,6 +191,7 @@ set formatoptions+=r " continue comments when pressing ENTER in I mode
 set formatoptions+=q " enable formatting of comments with gq
 set formatoptions+=n " detect lists for formatting
 set formatoptions+=b " auto-wrap in insert mode, and do not wrap old long lines
+set textwidth=80
 
 " Proper search
 set incsearch
@@ -214,25 +219,22 @@ inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 vmap <leader>a <Plug>(coc-codeaction-selected)
 nmap <leader>a <Plug>(coc-codeaction-selected)
 
-" =============================================================================
+" ==============================================================================
 " # GUI settings
-" =============================================================================
+" ==============================================================================
 set relativenumber " Relative line numbers
 set number " Also show current absolute line
-set colorcolumn=80 " and give me a colored column
+set colorcolumn=81 " and give me a colored column
 set laststatus=2
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
 
 
-" =============================================================================
+" ==============================================================================
 " # Keyboard shortcuts
-" =============================================================================
+" ==============================================================================
 " Quick-save
 nmap <leader>w :w<CR>
-
-" Open hotkey
-map <C-p> :Files<CR>
 
 " Move selected lines up and down
 vnoremap K :m '<-2<CR>gv=gv
@@ -244,22 +246,6 @@ nnoremap <C-s> :nohlsearch<cr>
 " Jump to start and end of line using the home row keys
 map H ^
 map L $
-
-" Neat X clipboard integration
-" <leader>p will paste clipboard into buffer
-" <leader>c will copy entire buffer into clipboard
-noremap <leader>p :read !xsel --clipboard --output<cr>
-noremap <leader>c :w !xsel -ib<cr><cr>
-
-" <leader>s for Rg search
-noremap <leader>s :Rg<Return>
-let g:fzf_layout = { 'down': '~20%' }
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview('up:60%')
-  \           : fzf#vim#with_preview('right:50%', '?'),
-  \   <bang>0)
 
 " No arrow keys --- force yourself to use the home row
 nnoremap <up> <nop>
@@ -273,21 +259,66 @@ inoremap <right> <nop>
 nnoremap <left> :bp<CR>
 nnoremap <right> :bn<CR>
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" <leader><leader> toggles between buffers
+nnoremap <leader><leader> <c-^>
+
+" Shortcuts for split navigation
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+" I can type :help on my own, thanks.
+map <F1> <Esc>
+imap <F1> <Esc>
+
+" Neat X clipboard integration
+" <leader>p will paste clipboard into buffer
+" <leader>c will copy entire buffer into clipboard
+noremap <leader>p :read !xsel --clipboard --output<cr>
+noremap <leader>c :w !xsel -ib<cr><cr>
+
+
+"""""""""""
+" fzf.vim "
+"""""""""""
+" Open hotkey
+map <C-p> :Files<CR>
+
+" <leader>s for Rg search
+noremap <leader>s :Rg<Return>
+let g:fzf_layout = { 'down': '~20%' }
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%', '?'),
+  \   <bang>0)
+
+"""""""""""
+" coc.vim "
+"""""""""""
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+
 " other plugin before putting this into your config.
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-inoremap <silent><expr> <c-space> coc#refresh()
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
 
 " Make <CR> auto-select the first completion item and notify coc.nvim to
 " format on enter, <cr> could be remapped by other vim plugin
@@ -328,19 +359,9 @@ nmap <leader>rn <Plug>(coc-rename)
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
-" <leader><leader> toggles between buffers
-nnoremap <leader><leader> <c-^>
-
-" Shortcuts for split navigation
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
-
-" I can type :help on my own, thanks.
-map <F1> <Esc>
-imap <F1> <Esc>
-
+""""""""""""""""""""""""""""
+" goyo.vim & limelight.vim "
+""""""""""""""""""""""""""""
 map <leader>f :Goyo<CR>
 
 function! s:goyo_enter()
@@ -363,10 +384,9 @@ function! s:goyo_leave()
   endif
 endfunction
 
-" =============================================================================
+" ==============================================================================
 " # Autocommands
-" =============================================================================
-
+" ==============================================================================
 autocmd! User GoyoEnter call <SID>goyo_enter()
 autocmd! User GoyoLeave call <SID>goyo_leave()
 
@@ -384,7 +404,7 @@ autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.org
 
 " Follow Rust code style rules
 au Filetype rust source ~/.config/nvim/scripts/spacetab.vim
-au Filetype rust set colorcolumn=100
+au Filetype rust set colorcolumn=101
 
 " Help filetype detection
 autocmd BufRead *.md set filetype=markdown
@@ -397,6 +417,6 @@ autocmd Filetype html,xml,xsl,php source ~/.config/nvim/scripts/closetag.vim
 " Use autocmd to force lightline update.
 autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
-" =============================================================================
+" ==============================================================================
 " # Footer
-" =============================================================================
+" ==============================================================================
