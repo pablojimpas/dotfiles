@@ -84,6 +84,10 @@ let gruvbox_invert_selection = '0'
 colorscheme gruvbox
 set background=dark
 syntax on
+" Maintain transparency
+highlight Normal     ctermbg=NONE guibg=NONE
+highlight LineNr     ctermbg=NONE guibg=NONE
+highlight SignColumn ctermbg=NONE guibg=NONE
 
 if !has('gui_running')
   set t_Co=256
