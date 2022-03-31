@@ -1,5 +1,5 @@
 #!/bin/sh
 
 tmux-sessionizer ~/uni/4/TFG/tfg;
-tmux send-keys "make report.all && zathura --fork ~/uni/4/TFG/tfg/docs/report/doc.pdf && vim -c \"VimtexCompile\" ~/uni/4/TFG/tfg/docs/report/doc.tex" Enter
+tmux send-keys "make report.all && zathura --fork ~/uni/4/TFG/tfg/doc/report/doc.pdf && vim -c \"VimtexCompile\" ~/uni/4/TFG/tfg/doc/report/doc.tex" Enter
 $TERMINAL -e tmux attach & disown

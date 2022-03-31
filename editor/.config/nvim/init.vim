@@ -140,8 +140,11 @@ let g:go_highlight_variable_assignments = 1
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_diagnostic_errors = 1
 let g:go_highlight_diagnostic_warnings = 1
+let g:go_auto_type_info = 1
+let g:go_auto_sameids = 1
 let g:go_metalinter_autosave = 1
 let g:go_metalinter_command = "golangci-lint"
+let g:go_metalinter_deadline = "5s"
 let g:go_list_autoclose = 1
 au FileType go nmap <leader>t :GoTest!<CR>
 au FileType go nmap <leader>v :GoVet!<CR>
@@ -156,6 +159,9 @@ let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=0
 set conceallevel=1
 let g:tex_conceal='abdmg'
+" Most VimTeX mappings rely on localleader and this can be changed with the
+" following line. The default is usually fine and is the symbol "\".
+let maplocalleader = ","
 
 " ==============================================================================
 " # Editor settings
@@ -281,7 +287,6 @@ imap <F1> <Esc>
 " <leader>c will copy entire buffer into clipboard
 noremap <leader>p :read !xsel --clipboard --output<cr>
 noremap <leader>c :w !xsel -ib<cr><cr>
-
 
 """""""""""
 " fzf.vim "

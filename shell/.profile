@@ -67,6 +67,7 @@ export PASSWORD_STORE_DIR=~/doc/passwords
 export FAV_ROOT_PATH=~/doc/links
 export SFEED_URL_FILE="$HOME/.sfeed/urls"
 [ -f "$SFEED_URL_FILE" ] || touch "$SFEED_URL_FILE"
+export SFEED_PLUMBER="linkhandler"
 
 # Other program settings:
 export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"

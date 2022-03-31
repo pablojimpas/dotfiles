@@ -15,6 +15,9 @@ set statusbar-h-padding 0
 set statusbar-v-padding 0
 set page-padding 1
 
+# Lower highlight transparency for a less distracting vimtex experience
+set highlight-transparency 0.33
+
 # Gruvbox dark color scheme
 set notification-error-bg       "#282828" # bg
 set notification-error-fg       "#fb4934" # bright:red
