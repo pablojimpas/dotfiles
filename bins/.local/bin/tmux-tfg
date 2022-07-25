@@ -1,5 +1,8 @@
 #!/bin/sh
 
-tmux-sessionizer ~/uni/4/TFG/tfg;
-tmux send-keys "make report.all && zathura --fork ~/uni/4/TFG/tfg/doc/report/doc.pdf && vim -c \"VimtexCompile\" ~/uni/4/TFG/tfg/doc/report/doc.tex" Enter
-$TERMINAL -e tmux attach & disown
+TFG_DIR=~/uni/4/TFG/tfg
+tmux-sessionizer $TFG_DIR;
+if ! tmux has-session -t=tfg:editor 2> /dev/null; then
+	tmux neww -n "editor" -c $TFG_DIR "make report.all && zathura --fork ~/uni/4/TFG/tfg/doc/report/doc.pdf && nvim -c \"VimtexCompile\" ~/uni/4/TFG/tfg/doc/report/doc.tex"
+	$TERMINAL -e tmux attach -t tfg:editor; 
+fi

@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/bin/sh
 selected=$(cat ~/.config/tmux/tmux-cht-languages ~/.config/tmux/tmux-cht-commands | fzf)
 if [ -z "$selected" ]; then
     exit 0

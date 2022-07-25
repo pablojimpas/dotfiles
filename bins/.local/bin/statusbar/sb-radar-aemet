@@ -1,0 +1,64 @@
+#!/bin/sh
+
+# Show RADAR of an AEMET preferred location.
+
+secs=1800 # Download a new radar if one hasn't been downloaded in $secs seconds.
+tmp_dir="${XDG_CACHE_HOME:-$HOME/.cache}/tmp_aemet"
+aemetloc="${XDG_CACHE_HOME:-$HOME/.cache}/aemetloc"
+radar_aemet="${XDG_CACHE_HOME:-$HOME/.cache}/radar_aemet.gif"
+
+pickloc() {
+	chosen="$(echo "am Almería
+sa Asturias
+ba Barcelona
+cc Cáceres
+pm Illes Balears
+ca Las Palmas
+ma Madrid
+ml Málaga
+mu Murcia
+vd Palencia
+se Sevilla
+va Valencia
+ss Vizcaya
+za Zaragoza" | dmenu -r -i -l 15 -p "Select AEMET Radar location")"
+
+	echo "$chosen" >"$aemetloc"
+}
+
+getradar() {
+	loc="$(cut -d ' ' -f 1 "$aemetloc")"
+	locname="$(cut -d ' ' -f 2 "$aemetloc")"
+	notify-send "🌦️ AEMET RADAR" "Pulling most recent AEMET RADAR fo $locname."
+	i=1
+	while [ "$i" -lt 25 ]; do
+		time=$((i * 10))
+		eval "$(date -u +Y=%Y\;m=%m\;d=%d\;H=%H\;M=%M -d "$time min ago")"
+		[ "$M" -lt "10" ] && M=00 # cater for octal clash
+		M=$(((M / 10) * 10))
+		[ "${M}" -eq 0 ] && M=00 # the math returns 0, so make it 00
+		url="http://www.aemet.es/imagenes_d/eltiempo/observacion/radar/${Y}${m:?}${d:?}${H}${M}_r8${loc}.gif"
+		filename=$(printf "%02d" $i)
+		curl -sL --create-dirs --output-dir "$tmp_dir" --output $filename.gif "$url"
+		i=$((i + 1))
+	done
+	convert -delay 100 -loop 0 "$tmp_dir"/*.gif "$radar_aemet"
+	rm -f "$tmp_dir"/*
+}
+
+showradar() { setsid -f mpv --play-dir=backward --no-osc --loop=inf --no-terminal "$radar_aemet"; }
+
+case $BLOCK_BUTTON in
+1)
+	[ ! -f "$radar_aemet" ] && pickloc && getradar
+	[ $(($(date '+%s') - $(stat -c %Y "$radar_aemet"))) -gt "$secs" ] && getradar
+	showradar
+	;;
+2) pickloc && getradar && showradar ;;
+3) notify-send "🗺️ AEMET RADAR module" "\- Left click for local AEMET RADAR.
+- Middle click to update change RADAR location.
+After $secs seconds, new clicks will also automatically update the AEMET RADAR." ;;
+6) "$TERMINAL" -e "$EDITOR" "$0" ;;
+esac
+
+echo 🗺️
