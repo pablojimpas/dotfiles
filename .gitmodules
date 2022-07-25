@@ -19,3 +19,24 @@
 [submodule "utils/.local/src/hosts"]
 	path = utils/.local/src/hosts
 	url = https://pedantic.software/git/~syg/hosts
+[submodule "utils/.local/src/scalc"]
+	path = utils/.local/src/scalc
+	url = https://git.sr.ht/~arivigo/scalc/
+[submodule "utils/.local/src/schain"]
+	path = utils/.local/src/schain
+	url = https://git.sr.ht/~arivigo/schain/
+[submodule "utils/.local/src/cras"]
+	path = utils/.local/src/cras
+	url = https://git.sr.ht/~arivigo/cras/
+[submodule "utils/.local/src/minitimer"]
+	path = utils/.local/src/minitimer
+	url = https://git.sr.ht/~arivigo/minitimer/
+[submodule "utils/.local/src/sline"]
+	path = utils/.local/src/sline
+	url = https://git.sr.ht/~arivigo/sline/
+[submodule "suckless/.local/src/sent"]
+	path = suckless/.local/src/sent
+	url = https://git.suckless.org/sent
+[submodule "suckless/.local/src/farbfeld"]
+	path = suckless/.local/src/farbfeld
+	url = https://git.suckless.org/farbfeld
