@@ -11,8 +11,8 @@ OHMYKSH_DIR=${HOME}/.local/src/ohmyksh
 # All the paths we use (in order!)
 set -A my_paths -- \
         /usr/ports/infrastructure/bin \
-        ~/bin \
-        ~/go/bin \
+        ~/.local/bin \
+        ~/.go/bin \
         /usr/local/plan9/bin
 
 paths "${my_paths[@]}"

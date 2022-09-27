@@ -5,7 +5,7 @@
 
 /usr/bin/pipewire &
 /usr/bin/pipewire-pulse &
-/usr/bin/pipewire-media-session &
+/usr/bin/wireplumber &
 remaps &		# Run the remaps script, switching caps/esc and more
 setbg &			# Set the background with the setbg script
 #xrdb ~/.Xresources & xrdbpid=$!	# Uncomment to use Xresources colors/settings on startup
