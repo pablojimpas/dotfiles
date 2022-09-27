@@ -50,3 +50,29 @@ MaxMessages 0
 ExpireUnread no
 # End profile
 
+
+IMAPStore contacto@agro-nexus.com-remote
+Host imap.migadu.com
+Port 993
+User contacto@agro-nexus.com
+PassCmd "pass contacto@agro-nexus.com"
+AuthMechs LOGIN
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+MaildirStore contacto@agro-nexus.com-local
+Subfolders Verbatim
+Path /home/polo/.local/share/mail/contacto@agro-nexus.com/
+Inbox /home/polo/.local/share/mail/contacto@agro-nexus.com/INBOX
+
+Channel contacto@agro-nexus.com
+Expunge Both
+Far :contacto@agro-nexus.com-remote:
+Near :contacto@agro-nexus.com-local:
+Patterns * !"[Gmail]/All Mail"
+Create Both
+SyncState *
+MaxMessages 0
+ExpireUnread no
+# End profile
+
