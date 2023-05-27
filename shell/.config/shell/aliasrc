@@ -11,6 +11,8 @@ for command in mount umount sv pacman updatedb su shutdown poweroff reboot ; do
 	alias $command="doas $command"
 done; unset command
 
+se() { cd ~/.local/bin; $EDITOR $(fzf) ;}
+
 # Verbosity and settings that you pretty much just always are going to want.
 alias \
 	cp="cp -iv" \
@@ -18,7 +20,7 @@ alias \
 	rm="rm -vI" \
 	bc="bc -ql" \
 	mkd="mkdir -pv" \
-	yt="youtube-dl --add-metadata -i" \
+	yt="yt-dlp --embed-metadata -i" \
 	yta="yt -x -f bestaudio/best" \
 	ffmpeg="ffmpeg -hide_banner"
 
@@ -27,7 +29,8 @@ alias \
 	ls="ls -hN --color=auto --group-directories-first" \
 	grep="grep --color=auto" \
 	diff="diff --color=auto" \
-	ccat="highlight --out-format=ansi"
+	ccat="highlight --out-format=ansi" \
+	ip="ip -color=auto"
 
 # These common commands are just too long! Abbreviate them.
 alias \
@@ -48,11 +51,10 @@ alias \
 	lf="lfub" \
 	magit="nvim -c MagitOnly" \
 	ref="shortcuts >/dev/null; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc ; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/zshnameddirrc" \
-	weath="more ${XDG_DATA_HOME:-$HOME/.local/share}/weatherreport" \
+	weath="less -S ${XDG_CACHE_HOME:-$HOME/.cache}/weatherreport" \
 
 alias \
 	l="ls -l" \
 	la="ls -a" \
 	ll="ls -la" \
 	man="man -Tpdf" \
-	tmux="tmux -f ${XDG_CONFIG_HOME:-$HOME/.config}/tmux/tmux.conf" \

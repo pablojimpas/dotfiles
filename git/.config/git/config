@@ -1,23 +1,33 @@
+[core]
+	editor = vim
+	autocrlf = input
+	hooksPath = ~/.config/git/hooks
 [user]
-	signingkey = D3ED161FF0E3DEA9
 	name = Pablo Jiménez Pascual
 	email = pablo@jimpas.me
+	signingkey = D3ED161FF0E3DEA9
+[push]
+	default = simple
+	followTags = yes
+[init]
+	defaultBranch = master
 [commit]
 	gpgsign = true
-[core]
-	editor = nvim
+	verbose = yes
+[tag]
+	gpgsign = true
 [credential]
 	helper = cache --timeout=3600
 [sendemail]
-	smtpserver = mail.jimpas.me
+	smtpserver = smtp.migadu.com
 	smtpuser = pablo@jimpas.me
-	smtpencryption = tls
-	smtpserverport = 587
+	smtpencryption = ssl
+	smtpserverport = 465
 	annotate = yes
-[init]
-	defaultBranch = master
 [alias]
 	st = status
 	ci = commit
 	br = branch
 	co = checkout
+[format]
+	signOff = yes

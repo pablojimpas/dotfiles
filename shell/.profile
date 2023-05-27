@@ -1,8 +1,5 @@
 #!/bin/sh
 
-# Dircolors
-test -r "~/.dir_colors" && eval $(dircolors ~/.dir_colors)
-
 # Fix for Android Studio and other Java programs
 export _JAVA_AWT_WM_NONREPARENTING=1
 
@@ -11,10 +8,13 @@ export QT_STYLE_OVERRIDE=breeze
 
 export ENV=$HOME/.kshrc
 
+# avoid fancy colors, my screen is not a clown playground
+export NO_COLOR=1
+
 # Default programs:
-export EDITOR="nvim"
+export EDITOR="vim"
 export TERMINAL="st"
-export BROWSER="brave"
+export BROWSER="librewolf"
 
 # Trick flutter command line tool
 export CHROME_EXECUTABLE="brave"
@@ -40,6 +40,7 @@ export SFEED_URL_FILE="$HOME/.sfeed/urls"
 export SFEED_PLUMBER="linkhandler"
 
 # Other program settings:
+export FZF_DEFAULT_OPTS=--color=bw
 export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
 export LESS_TERMCAP_mb="$(printf '%b' '[1;31m')"
 export LESS_TERMCAP_md="$(printf '%b' '[1;36m')"
@@ -184,3 +185,6 @@ sudo -n loadkeys ${XDG_DATA_HOME:-$HOME/.local/share}/ttymaps.kmap 2>/dev/null
 if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
 	exec startx
 fi
+
+# include Mycroft commands
+source ~/.profile_mycroft

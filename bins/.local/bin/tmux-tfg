@@ -1,8 +1,8 @@
 #!/bin/sh
 
 TFG_DIR=~/uni/4/TFG/tfg
-tmux-sessionizer $TFG_DIR;
+tmux-sessionizer "$TFG_DIR";
 if ! tmux has-session -t=tfg:editor 2> /dev/null; then
-	tmux neww -n "editor" -c $TFG_DIR "make diagrams.latex && $EDITOR -c \"VimtexCompile\" ~/uni/4/TFG/tfg/doc/report/doc.tex"
-	$TERMINAL -e tmux attach -t tfg:editor;
+	tmux neww -n "editor" -c "$TFG_DIR" "./mage diagrams:latex && $EDITOR -c \"VimtexCompile\" ~/uni/4/TFG/tfg/docs/report/doc.tex"
+	"$TERMINAL" -e tmux attach -t tfg:editor;
 fi

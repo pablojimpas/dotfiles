@@ -1,36 +1,76 @@
-[character]
-symbol = "➜"
-vicmd_symbol = " ❮"
-error_symbol = "✗"
-use_symbol_for_status = true
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
 
-[cmd_duration]
-min_time = 500
+# Inserts a blank line between shell prompts
+add_newline = false
 
+# Replace the "❯" symbol in the prompt with "➜"
+[character] # The name of the module we are configuring is "character"
+success_symbol = "[➜](bold green)" # The "success_symbol" segment is being set to "➜" with the color "bold green"
+vicmd_symbol = "[❮](bold green)"
+[directory]
+truncation_length = 10
+truncate_to_repo = false
+style = "bold purple"
+format = "[:$path]($style)[$read_only]($read_only_style) "
+read_only = "  "
+[jobs]
+symbol = " "
+style = "bold red"
+number_threshold = 1
+format = "[$symbol]($style)"
+[localip]
+ssh_only = true
+disabled = false
+format = "[$localipv4](bold red)"
+[hostname]
+ssh_only = false
+disabled = false
+format = "[$hostname](bold blue) "
+[git_branch]
+style = "bold white"
+format = '[\($symbol$branch\)]($style) '
+symbol = " "
+[git_metrics]
+disabled = false
+format = "[+$added]($added_style)/[-$deleted]($deleted_style) "
+[line_break]
+disabled = false
+[username]
+style_user = "yellow bold"
+format = "[$user]($style)[@](bold green)"
+disabled = false
+show_always = true
 [[battery.display]]  # "bold red" style when capacity is between 0% and 30%
 threshold = 30
 style = "bold red"
-
 [[battery.display]]  # "bold yellow" style when capacity is between 30% and 60%
 threshold = 60
 style = "bold yellow"
-
 [[battery.display]]  # "green" style when capacity is between 60% and 99%
 threshold = 99
 style = "green"
 
-[aws]
-symbol = " "
 
-[battery]
-full_symbol = ""
-charging_symbol = ""
-discharging_symbol = ""
+###############################################################################
+# NERD FONT SYMBOLS PRESET
+###############################################################################
+[aws]
+symbol = "  "
+
+[buf]
+symbol = " "
+
+[c]
+symbol = " "
 
 [conda]
 symbol = " "
 
-[docker]
+[dart]
+symbol = " "
+
+[docker_context]
 symbol = " "
 
 [elixir]
@@ -39,14 +79,11 @@ symbol = " "
 [elm]
 symbol = " "
 
-[git_branch]
-symbol = " "
-
 [golang]
 symbol = " "
 
 [haskell]
-symbol = " "
+symbol = " "
 
 [hg_branch]
 symbol = " "
@@ -57,29 +94,41 @@ symbol = " "
 [julia]
 symbol = " "
 
+[lua]
+symbol = " "
+
 [memory_usage]
 symbol = " "
+
+[meson]
+symbol = "喝 "
 
 [nim]
 symbol = " "
 
 [nix_shell]
-symbol = " "
+symbol = " "
 
 [nodejs]
-symbol = " "
+symbol = " "
 
 [package]
 symbol = " "
 
-[php]
-symbol = " "
-
 [python]
-symbol = " "
+symbol = " "
+
+[rlang]
+symbol = "ﳒ "
 
 [ruby]
-symbol = " "
+symbol = " "
 
 [rust]
-symbol = " "
+symbol = " "
+
+[scala]
+symbol = " "
+
+[spack]
+symbol = "🅢 "

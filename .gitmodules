@@ -10,12 +10,12 @@
 [submodule "suckless/.local/src/dmenu"]
 	path = suckless/.local/src/dmenu
 	url = git@github.com:pablojimpas/dmenu.git
-[submodule "utils/.config/mpv/scripts/mpvSockets"]
-	path = utils/.config/mpv/scripts/mpvSockets
-	url = https://github.com/wis/mpvSockets.git
 [submodule "shell/.local/src/ohmyksh"]
 	path = shell/.local/src/ohmyksh
 	url = git@github.com:pablojimpas/ohmyksh.git
+[submodule "suckless/.local/src/sent"]
+	path = suckless/.local/src/sent
+	url = git@github.com:pablojimpas/sent.git
 [submodule "utils/.local/src/hosts"]
 	path = utils/.local/src/hosts
 	url = https://pedantic.software/git/~syg/hosts
@@ -34,9 +34,6 @@
 [submodule "utils/.local/src/sline"]
 	path = utils/.local/src/sline
 	url = https://git.sr.ht/~arivigo/sline/
-[submodule "suckless/.local/src/sent"]
-	path = suckless/.local/src/sent
-	url = https://git.suckless.org/sent
 [submodule "suckless/.local/src/farbfeld"]
 	path = suckless/.local/src/farbfeld
 	url = https://git.suckless.org/farbfeld
