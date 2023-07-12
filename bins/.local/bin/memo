@@ -1,0 +1,31 @@
+#!/bin/sh
+
+MEMOS_DIR=~/doc/notes/memos
+MEMO_PATH=~/doc/notes/memo.txt
+
+# Get the latest file in the memos directory based on date. Assuming YYYY-MM-YY
+latest_file=$(ls -1 "$MEMOS_DIR"/*.txt 2>/dev/null | tail -n 1)
+
+# Extract the date from the latest file
+latest_date=$(basename "$latest_file" .txt)
+
+# Get the current date
+current_date=$(date "+%Y-%m-%d")
+
+# Calculate the date one day after the latest file
+next_date=$(date -d "$latest_date + 1 day" "+%Y-%m-%d")
+
+# Compare the current date with the next date
+if [ "$current_date" = "$next_date" ]; then
+  # We are up to date, use existing memo.txt
+  "$EDITOR" "$MEMO_PATH"
+else
+  # Old memo.txt, start from a clean state
+  # Store the existing memo.txt with yesterday's date to avoid entering this
+  # branch again during today. Not accurate if this command is not executed
+  # every day, but good enough.
+  previous_date=$(date -d "$current_date - 1 day" "+%Y-%m-%d")
+  mv "$MEMO_PATH" "$MEMOS_DIR"/"$previous_date".txt
+  "$EDITOR" "$MEMO_PATH"
+fi
+
