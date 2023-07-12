@@ -78,7 +78,7 @@ set formatoptions+=b " auto-wrap in insert mode, and do not wrap old long lines
 set textwidth=80
 
 " spell check
-setlocal spell
+autocmd BufRead,BufNewFile *.md,*.tex,*.txt,*.ms,*.me,*.mom,*.man setlocal spell
 set spelllang=es,en
 inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 
@@ -174,10 +174,7 @@ autocmd BufRead,BufNewFile *.pl set filetype=prolog
 autocmd FileType markdown setlocal tw=80 et ts=2 sw=2
 autocmd FileType text setlocal tw=80
 
-let s:hidden_all = 0
-function! ToggleHiddenAll()
-  if s:hidden_all == 0
-    let s:hidden_all = 1
+function! s:goyo_enter()
     if executable('tmux') && strlen($TMUX)
       silent !tmux set status off
       silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
@@ -186,8 +183,8 @@ function! ToggleHiddenAll()
     set nonumber norelativenumber
     set cc=
     set scrolloff=999
-  else
-    let s:hidden_all = 0
+endfunction
+function! s:goyo_leave()
     if executable('tmux') && strlen($TMUX)
       silent !tmux set status on
       silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
@@ -196,9 +193,11 @@ function! ToggleHiddenAll()
     set number relativenumber
     set cc=80,120
     set scrolloff=8
-  endif
 endfunction
-map <leader>f :call ToggleHiddenAll()<CR>
+map <leader>f :Goyo<CR>
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
+let g:goyo_width = 81
 
 " load vim's builtin man plugin
 runtime ftplugin/man.vim
@@ -225,6 +224,7 @@ call plug#begin()
 	Plug 'tpope/vim-endwise'
 	" interface enhancements
 	Plug 'machakann/vim-highlightedyank'
+	Plug 'junegunn/goyo.vim'
 	" fuzzy finder
 	Plug 'junegunn/fzf.vim'
 	Plug 'airblade/vim-rooter'
@@ -232,7 +232,9 @@ call plug#begin()
 	Plug 'plan9-for-vimspace/acme-colors'
 	" language-specific plugins
 	Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-	Plug 'dart-lang/dart-vim-plugin'
+	Plug 'dart-lang/dart-vim-plugin', { 'for': 'dart' }
+	Plug 'natebosch/vim-lsc'
+	Plug 'natebosch/vim-lsc-dart'
 	Plug 'lervag/vimtex'
 	Plug 'aklt/plantuml-syntax'
 call plug#end()
@@ -277,6 +279,7 @@ let g:go_jump_to_error = 0
 let g:go_metalinter_autosave_enabled = []
 let g:go_metalinter_enabled = []
 let g:go_list_autoclose = 1
+au FileType go nmap <leader>r :GoRename!<CR>
 au FileType go nmap <leader>t :GoTest!<CR>
 au FileType go nmap <leader>v :GoVet!<CR>
 au FileType go nmap <leader>b :GoBuild!<CR>
@@ -289,6 +292,19 @@ au FileType go nmap <leader>e :GoIfErr<CR>
 let g:dart_style_guide = 2
 let g:dart_format_on_save = 1
 let g:dart_trailing_comma_indent = v:true
+
+let b:project_nav_root_markers = ['pubspec.yaml']
+let g:lsc_dart_sdk_path = "~/.flutter-git"
+let g:lsc_auto_map = {
+    \ 'GoToDefinition': 'gd',
+    \ 'FindReferences': 'gr',
+    \ 'FindImplementations': 'gI',
+    \ 'FindCodeActions': 'ga',
+    \ 'Rename': '<leader>r',
+    \ 'ShowHover': v:true,
+    \ 'DocumentSymbol': 'go',
+    \ 'Completion': 'completefunc',
+    \}
 
 " vimtex
 let g:tex_flavor='latex'
