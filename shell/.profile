@@ -169,6 +169,9 @@ if [ -d "$HOME/.go" ] ; then
     PATH="$PATH:$HOME/.go/bin"
 fi
 
+export BUN_INSTALL="$HOME/.bun"
+PATH="$BUN_INSTALL/bin:$PATH"
+
 if [ -d "$CARGO_HOME/bin" ] ; then
     PATH="$PATH:$CARGO_HOME/bin"
 fi
