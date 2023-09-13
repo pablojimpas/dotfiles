@@ -279,7 +279,7 @@ let g:go_jump_to_error = 0
 let g:go_metalinter_autosave_enabled = []
 let g:go_metalinter_enabled = []
 let g:go_list_autoclose = 1
-au FileType go nmap <leader>r :GoRename!<CR>
+au FileType go nmap <leader>r :GoRename<CR>
 au FileType go nmap <leader>t :GoTest!<CR>
 au FileType go nmap <leader>v :GoVet!<CR>
 au FileType go nmap <leader>b :GoBuild!<CR>
