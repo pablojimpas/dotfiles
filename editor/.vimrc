@@ -269,6 +269,7 @@ highlight SignColumn ctermbg=NONE guibg=NONE
 
 " go
 let g:go_gopls_gofumpt = 1
+let g:go_fmt_command = 'goimports'
 let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
