@@ -62,6 +62,8 @@ set statusline+=\|%{&fileformat}
 set statusline+=\ %p%% " percentage through file lines
 set statusline+=\ %l:%c " line and column numbers
 set statusline+=\  " empty space at the end
+" use better characters for panel dividers
+set fillchars=vert:│,fold:┈,diff:┈
 
 " use wide tabs
 set shiftwidth=8
@@ -229,7 +231,7 @@ call plug#begin()
 	Plug 'junegunn/fzf.vim'
 	Plug 'airblade/vim-rooter'
 	" colors
-	Plug 'plan9-for-vimspace/acme-colors'
+	Plug 'morhetz/gruvbox'
 	" language-specific plugins
 	Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 	Plug 'dart-lang/dart-vim-plugin', { 'for': 'dart' }
@@ -252,10 +254,18 @@ map <C-p> :Files<CR>
 noremap <leader>s :Rg<Return>
 let g:fzf_layout = { 'window': { 'width': 1.0, 'height': 0.5, 'relative': v:true, 'yoffset': 1.0, 'border': 'none' } }
 
-colorscheme acme
-set background=light
+" Gruvbox theme variables
+let gruvbox_contrast_dark = 'hard'
+let gruvbox_invert_selection = '0'
+colorscheme gruvbox
+set background=dark
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
+
+" Maintain transparency
+highlight Normal     ctermbg=NONE guibg=NONE
+highlight LineNr     ctermbg=NONE guibg=NONE
+highlight SignColumn ctermbg=NONE guibg=NONE
 
 " go
 let g:go_gopls_gofumpt = 1
