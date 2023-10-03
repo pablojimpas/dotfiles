@@ -10,7 +10,7 @@ export QT_STYLE_OVERRIDE=breeze
 export ENV=$HOME/.kshrc
 
 # avoid fancy colors, my screen is not a clown playground
-# export NO_COLOR=1
+export NO_COLOR=1
 
 # Default programs:
 export EDITOR="vim"
@@ -41,7 +41,7 @@ export SFEED_URL_FILE="$HOME/.sfeed/urls"
 export SFEED_PLUMBER="linkhandler"
 
 # Other program settings:
-# export FZF_DEFAULT_OPTS=--color=bw
+export FZF_DEFAULT_OPTS=--color=bw
 export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
 export LESS_TERMCAP_mb="$(printf '%b' '[1;31m')"
 export LESS_TERMCAP_md="$(printf '%b' '[1;36m')"
