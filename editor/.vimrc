@@ -231,7 +231,7 @@ call plug#begin()
 	Plug 'junegunn/fzf.vim'
 	Plug 'airblade/vim-rooter'
 	" colors
-	Plug 'morhetz/gruvbox'
+        Plug 'plan9-for-vimspace/acme-colors'
 	" language-specific plugins
 	Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 	Plug 'dart-lang/dart-vim-plugin', { 'for': 'dart' }
@@ -254,11 +254,8 @@ map <C-p> :Files<CR>
 noremap <leader>s :Rg<Return>
 let g:fzf_layout = { 'window': { 'width': 1.0, 'height': 0.5, 'relative': v:true, 'yoffset': 1.0, 'border': 'none' } }
 
-" Gruvbox theme variables
-let gruvbox_contrast_dark = 'hard'
-let gruvbox_invert_selection = '0'
-colorscheme gruvbox
-set background=dark
+colorscheme acme
+set background=light
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
 
