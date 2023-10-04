@@ -112,6 +112,10 @@ nmap <leader>w :w<CR>
 noremap <leader>p :read !xsel --clipboard --output<cr>
 " copy buffer into clipboard
 noremap <leader>c :w !xsel -ib<cr><cr>
+" Open corresponding .pdf/.html or preview
+map <leader>o :!opout "%:p"<cr><cr>
+" Compile document, be it groff/LaTeX/markdown/etc.
+map <leader>l :w! \| !compiler "%:p"<cr><cr>
 " stop highlight searching
 vnoremap <C-s> :nohlsearch<cr>
 nnoremap <C-s> :nohlsearch<cr>
@@ -238,6 +242,7 @@ call plug#begin()
 	Plug 'natebosch/vim-lsc'
 	Plug 'natebosch/vim-lsc-dart'
 	Plug 'lervag/vimtex'
+	Plug 'terrastruct/d2-vim'
 	Plug 'aklt/plantuml-syntax'
 call plug#end()
 
