@@ -11,6 +11,7 @@ feeds() {
 	feed 'b-list.org' 'https://www.b-list.org/feeds/entries/'
 	feed 'baak6.com' 'https://baak6.com/rss.xml'
 	feed 'benhoyt.com' 'https://benhoyt.com/writings/rss.xml'
+	feed 'blog.research.google' 'https://blog.research.google/atom.xml'
 	feed 'blog.strus.guru' 'https://blog.strus.guru/index.xml'
 	feed 'blog.thea.codes' 'https://blog.thea.codes/feed.xml'
 	feed 'briancallahan.net' 'https://briancallahan.net/blog/feed.xml'

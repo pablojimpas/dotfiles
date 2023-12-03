@@ -1,0 +1,8 @@
+#!/bin/sh
+
+doas pkill pipewire
+doas pkill pipewire-pulse
+doas wireplumber
+pipewire & disown
+pipewire-pulse & disown
+wireplumber & disown

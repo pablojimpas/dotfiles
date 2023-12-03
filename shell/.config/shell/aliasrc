@@ -58,3 +58,5 @@ alias \
 	la="ls -a" \
 	ll="ls -la" \
 	man="man -Tpdf" \
+
+alias sp="doas system76-power"
