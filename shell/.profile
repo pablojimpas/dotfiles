@@ -10,7 +10,7 @@ export QT_STYLE_OVERRIDE=breeze
 export ENV=$HOME/.kshrc
 
 # avoid fancy colors, my screen is not a clown playground
-export NO_COLOR=1
+# export NO_COLOR=1
 
 # Default programs:
 export EDITOR="vim"
@@ -25,8 +25,6 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_STATE_HOME="$HOME/.local/state"
-export ANDROID_HOME="$XDG_DATA_HOME"/android
-export GRADLE_USER_HOME="$XDG_DATA_HOME"/gradle
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg
@@ -41,7 +39,7 @@ export SFEED_URL_FILE="$HOME/.sfeed/urls"
 export SFEED_PLUMBER="linkhandler"
 
 # Other program settings:
-export FZF_DEFAULT_OPTS=--color=bw
+# export FZF_DEFAULT_OPTS=--color=bw
 export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
 export LESS_TERMCAP_mb="$(printf '%b' '[1;31m')"
 export LESS_TERMCAP_md="$(printf '%b' '[1;36m')"
