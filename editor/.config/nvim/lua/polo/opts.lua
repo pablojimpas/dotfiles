@@ -1,5 +1,3 @@
--- disable gui cursor style
-vim.opt.guicursor = ''
 -- automatically write files when changing open buffers
 vim.opt.autowrite = true
 -- automatically indent new lines
@@ -36,3 +34,7 @@ vim.opt.timeoutlen = 300
 vim.opt.textwidth, vim.opt.formatoptions = 80, 'tcrqnb'
 -- spell check
 vim.opt.spell, vim.opt.spelllang = true, 'es,en'
+-- hide concealed text unless there's a replacement
+vim.opt.conceallevel = 2
+-- always reserve space for sign column
+vim.opt.signcolumn = 'yes'
