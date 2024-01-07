@@ -7,6 +7,7 @@ doas system76-power daemon &
 /usr/bin/pipewire &
 /usr/bin/pipewire-pulse &
 /usr/bin/wireplumber &
+mpd &
 xinput set-prop 11 343 1 & # Enable tap in touchpad
 remaps &		# Run the remaps script, switching caps/esc and more
 setbg &			# Set the background with the setbg script
