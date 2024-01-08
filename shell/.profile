@@ -13,7 +13,7 @@ export ENV=$HOME/.kshrc
 # export NO_COLOR=1
 
 # Default programs:
-export EDITOR="vim"
+export EDITOR="nvim"
 export TERMINAL="st"
 export BROWSER="librewolf"
 
