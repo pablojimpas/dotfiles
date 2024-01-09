@@ -14,15 +14,12 @@ symbol = " "
 style = "bold red"
 number_threshold = 1
 format = "[$symbol]($style)"
-[localip]
+[hostname]
+ssh_symbol = "  "
 ssh_only = true
 disabled = false
-format = "[$localipv4](bold red)"
-[hostname]
-ssh_symbol = " "
-ssh_only = false
-disabled = false
-format = "[$hostname](bold blue)"
+# format = "[$hostname](bold blue)"
+format = "[$ssh_symbol$hostname]($style)"
 [git_branch]
 style = "bold white"
 format = '[\($symbol$branch\)]($style) '
@@ -33,7 +30,7 @@ disabled = false
 disabled = false
 [username]
 style_user = "yellow bold"
-format = "[$user]($style)[@](bold green)"
+format = "[$user]($style)"
 disabled = false
 show_always = true
 [[battery.display]]  # "bold red" style when capacity is between 0% and 30%
