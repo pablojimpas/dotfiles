@@ -2,7 +2,7 @@
 
 doas pkill pipewire
 doas pkill pipewire-pulse
-doas wireplumber
+doas pkill wireplumber
 pipewire & disown
 pipewire-pulse & disown
 wireplumber & disown
