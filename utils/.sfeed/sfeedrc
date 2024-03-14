@@ -5,6 +5,7 @@ feeds() {
 	# feed <name> <feedurl> [basesiteurl] [encoding]
 	feed 'antonz.org' 'https://antonz.org/index.xml'
 	feed 'alexedwards.net' 'https://www.alexedwards.net/static/feed.rss'
+	feed 'alexkarle.com' 'https://alexkarle.com/atom.xml'
 	feed 'ar.al' 'https://ar.al/index.xml'
 	feed 'archlinux.org' 'https://archlinux.org/feeds/news/'
 	feed 'artixlinux.org' 'https://artixlinux.org/feed.php'

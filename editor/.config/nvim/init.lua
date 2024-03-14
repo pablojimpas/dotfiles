@@ -54,7 +54,7 @@ require('lazy').setup({
   },
 
   {
-    'plan9-for-vimspace/acme-colors',
+    'pablojimpas/acme-colors',
     priority = 1000,
   },
 

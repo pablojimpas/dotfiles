@@ -32,12 +32,18 @@ vim.opt.updatetime = 100
 vim.opt.timeoutlen = 300
 -- wrapping options
 vim.opt.textwidth, vim.opt.formatoptions = 80, 'tcrqnb'
--- spell check
-vim.opt.spell, vim.opt.spelllang = true, 'es,en'
+-- spell checks
+vim.opt.spelllang = 'es,en'
+vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+  pattern = {"*.md", "*.tex", "*.txt", "*.ms", "*.me", "*.mom", "*.man"},
+  command = "setlocal spell",
+})
 -- hide concealed text unless there's a replacement
 vim.opt.conceallevel = 2
 -- don't waste space with an extra thick column on the left
 vim.opt.signcolumn = 'number'
+-- avoid losing focus
+vim.opt.cursorline = true
 -- custom status line
 vim.opt.statusline = ''
   .. '%#Conceal#'                                 -- see :help hitest for colors
