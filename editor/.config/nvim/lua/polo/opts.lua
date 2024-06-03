@@ -40,18 +40,20 @@ vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
 })
 -- hide concealed text unless there's a replacement
 vim.opt.conceallevel = 2
+-- always reserve space for sign column
+vim.opt.signcolumn = 'yes'
 -- don't waste space with an extra thick column on the left
-vim.opt.signcolumn = 'number'
--- avoid losing focus
-vim.opt.cursorline = true
--- custom status line
-vim.opt.statusline = ''
-  .. '%#Conceal#'                                 -- see :help hitest for colors
-  .. ' %f'                                        -- file path in current buffer
-  .. '%m'                                         -- modified flag
-  .. '%='                                         -- separation
-  .. '%y'                                         -- file type
-  .. ' %{&fileencoding?&fileencoding:&encoding}'  -- better be utf-8
-  .. '|%{&fileformat}'                            -- better be unix format (\n)
-  .. ' %p%%'                                      -- line scroll percentage
-  .. ' %l:%c '                                    -- line and column numbers
+-- vim.opt.signcolumn = 'number'
+-- -- avoid losing focus
+-- vim.opt.cursorline = true
+-- -- custom status line
+-- vim.opt.statusline = ''
+--   .. '%#Conceal#'                                 -- see :help hitest for colors
+--   .. ' %f'                                        -- file path in current buffer
+--   .. '%m'                                         -- modified flag
+--   .. '%='                                         -- separation
+--   .. '%y'                                         -- file type
+--   .. ' %{&fileencoding?&fileencoding:&encoding}'  -- better be utf-8
+--   .. '|%{&fileformat}'                            -- better be unix format (\n)
+--   .. ' %p%%'                                      -- line scroll percentage
+--   .. ' %l:%c '                                    -- line and column numbers

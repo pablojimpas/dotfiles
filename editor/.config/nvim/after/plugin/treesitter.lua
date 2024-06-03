@@ -24,7 +24,6 @@ vim.defer_fn(function()
 
     highlight = {
       enable = true,
-      disable = { "latex" },
       additional_vim_regex_highlighting = false,
     },
     indent = { enable = true },
