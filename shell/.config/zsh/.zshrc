@@ -86,3 +86,5 @@ source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.
 
 # bun completions
 [ -s "/home/polo/.bun/_bun" ] && source "/home/polo/.bun/_bun"
+
+eval "$(starship init zsh)"
