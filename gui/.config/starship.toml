@@ -51,6 +51,7 @@ style = "green"
 symbol = "  "
 
 [buf]
+disabled = true
 symbol = " "
 
 [c]
@@ -121,6 +122,7 @@ symbol = " "
 
 [nodejs]
 symbol = " "
+detect_files = ['package.json', '.node-version', '!bunfig.toml', '!bun.lockb']
 
 [ocaml]
 symbol = " "
@@ -167,6 +169,7 @@ Unknown = " "
 Windows = "󰍲 "
 
 [package]
+disabled = true
 symbol = "󰏗 "
 
 [perl]
