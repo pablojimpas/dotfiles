@@ -31,3 +31,6 @@
 	co = checkout
 [format]
 	signOff = yes
+[diff "lockb"]
+	textconv = bun
+	binary = true
