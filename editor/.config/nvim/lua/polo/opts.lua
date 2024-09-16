@@ -57,3 +57,5 @@ vim.opt.signcolumn = 'yes'
 --   .. '|%{&fileformat}'                            -- better be unix format (\n)
 --   .. ' %p%%'                                      -- line scroll percentage
 --   .. ' %l:%c '                                    -- line and column numbers
+
+vim.filetype.add({ extension = { templ = "templ" } })

@@ -47,11 +47,20 @@ require('mason-lspconfig').setup()
 local servers = {
   -- clangd = {},
   clangd = { filetypes = { "c", "cpp", "objc", "objcpp", "cuda" } },
-  -- gopls = {},
-  -- pyright = {},
+  gopls = {},
+  golangci_lint_ls = { init_options = {
+      command = { 'golangci-lint', 'run', '--fast', '--out-format', 'json' },
+  }},
+  templ = {},
+  html = { filetypes = { 'html', 'templ', 'twig', 'hbs' } },
+  htmx = { filetypes = { 'html', 'templ' } },
+  tailwindcss = {
+    filetypes = { "templ", "astro", "javascript", "typescript", "react" },
+    init_options = { userLanguages = { templ = "html" } },
+  },
+  pyright = {},
   -- rust_analyzer = {},
-  -- tsserver = {},
-  -- html = { filetypes = { 'html', 'twig', 'hbs'} },
+  tsserver = {},
 
   lua_ls = {
     Lua = {
