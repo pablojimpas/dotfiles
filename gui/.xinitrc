@@ -10,8 +10,6 @@
 
 . "$HOME/.xprofile"
 
-export SSH_ASKPASS=/usr/lib/ssh/x11-ssh-askpass
-export SSH_ASKPASS_REQUIRE=prefer
-eval "$(keychain --eval --noask ~/.ssh/id_rsa)"
-
 ssh-agent dwm
+# export DESKTOP_SESSION=plasma
+# exec startplasma-x11
