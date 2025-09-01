@@ -52,3 +52,5 @@ vim.keymap.set({ 'n', 'v' }, '<leader>7', '7gt')
 vim.keymap.set({ 'n', 'v' }, '<leader>8', '8gt')
 vim.keymap.set({ 'n', 'v' }, '<leader>9', '9gt')
 vim.keymap.set({ 'n', 'v' }, '<leader>0', ':tablast<cr>')
+-- diagnostics
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
