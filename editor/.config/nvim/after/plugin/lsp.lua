@@ -95,6 +95,12 @@ local servers = {
       diagnostics = { disable = { 'missing-fields' } },
     },
   },
+
+  expert = {
+    cmd = { 'expert' },
+    root_markers = { 'mix.exs', '.git' },
+    filetypes = { 'elixir', 'eelixir', 'heex' },
+  },
 }
 
 
