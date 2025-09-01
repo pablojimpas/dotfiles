@@ -122,7 +122,7 @@ symbol = " "
 
 [nodejs]
 symbol = " "
-detect_files = ['package.json', '.node-version', '!bunfig.toml', '!bun.lockb']
+detect_files = ['package.json', '.node-version', '!bunfig.toml', '!bun.lockb', '!bun.lock']
 
 [ocaml]
 symbol = " "
