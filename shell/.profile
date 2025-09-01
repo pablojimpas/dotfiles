@@ -10,7 +10,7 @@ export QT_STYLE_OVERRIDE=breeze
 export ENV=$HOME/.kshrc
 
 # avoid fancy colors, my screen is not a clown playground
-export NO_COLOR=1
+# export NO_COLOR=1
 
 # Default programs:
 export EDITOR="nvim"
@@ -39,11 +39,11 @@ export SFEED_URL_FILE="$HOME/.sfeed/urls"
 export SFEED_PLUMBER="linkhandler"
 
 # Other program settings:
-export FZF_DEFAULT_OPTS=--color=bw
-# export FZF_DEFAULT_OPTS="\
-  # --color=bg+:#313244,spinner:#f5e0dc,hl:#f38ba8 \
-  # --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
-  # --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
+# export FZF_DEFAULT_OPTS=--color=bw
+export FZF_DEFAULT_OPTS="\
+  --color=bg+:#313244,spinner:#f5e0dc,hl:#f38ba8 \
+  --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
+  --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
 export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
 export LESS_TERMCAP_mb="$(printf '%b' '[1;31m')"
 export LESS_TERMCAP_md="$(printf '%b' '[1;36m')"
