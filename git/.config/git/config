@@ -1,6 +1,5 @@
 [core]
 	editor = nvim
-	pager = delta
 	autocrlf = input
 	hooksPath = ~/.config/git/hooks
 [user]
@@ -34,16 +33,7 @@
 	co = checkout
 [format]
 	signOff = yes
-[interactive]
-	diffFilter = delta --color-only
 
-[include]
-	path = ~/.config/git/delta/catppuuccin.gitconfig
-
-[delta]
-	features = catppuccin-mocha
-	navigate = true
-	side-by-side = true
 [diff "lockb"]
 	textconv = bun
 	binary = true
