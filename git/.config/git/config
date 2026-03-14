@@ -1,14 +1,18 @@
 [core]
 	editor = nvim
 	autocrlf = input
-	hooksPath = ~/.config/git/hooks
 [user]
 	name = Pablo Jiménez Pascual
 	email = pablo@jimpas.me
 	signingkey = D3ED161FF0E3DEA9
+[fetch]
+	prune = true
+[pull]
+	rebase = true
 [push]
 	default = simple
 	followTags = yes
+	autoSetupRemote = true
 [init]
 	defaultBranch = master
 [commit]
@@ -37,3 +41,11 @@
 [diff "lockb"]
 	textconv = bun
 	binary = true
+[branch "master"]
+	rebase = true
+[branch "main"]
+	rebase = true
+[diff]
+	algorithm = histogram
+[rerere]
+	enabled = true
