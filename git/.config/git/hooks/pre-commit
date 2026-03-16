@@ -1,0 +1,21 @@
+#!/bin/sh -eu
+failed=""
+for file in $(git diff --cached --name-only --diff-filter=ACM | grep "\.go$"); do
+	output="$(gofmt -l "$file" 2>&1 || echo "syntax error")"
+	if [ "$output" != "" ]; then
+		failed="${failed}gofmt failed on $file\n"
+	fi
+done
+if [ "$failed" != "" ]; then
+	echo -e "$failed"
+	printf "Ignore? [y/N] "
+	read yn </dev/tty
+	if [ "$yn" != "y" ]; then
+		exit 1
+	fi
+fi
+
+git_dir="$(git rev-parse --git-dir)"
+if [ -x "$git_dir/hooks/pre-commit" ]; then
+	exec "$git_dir/hooks/pre-commit"
+fi
