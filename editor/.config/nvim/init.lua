@@ -89,7 +89,7 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = true,
-        theme = 'catppuccin',
+        theme = 'catppuccin-nvim',
 
         section_separators = { left = '', right = '' },
         component_separators = { left = '', right = '' }
@@ -169,11 +169,32 @@ require('lazy').setup({
   },
 
   {
-    -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
-    dependencies = {
-      'nvim-treesitter/nvim-treesitter-textobjects',
-    },
+    lazy = false,
     build = ':TSUpdate',
+    config = function()
+      local ts = require('nvim-treesitter')
+
+      ts.install({ 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'javascript', 'typescript', 'vimdoc', 'vim', 'bash', 'html', 'markdown', 'markdown_inline' })
+
+      vim.api.nvim_create_autocmd('FileType', {
+        callback = function(args)
+          local lang = vim.treesitter.language.get_lang(vim.bo[args.buf].filetype)
+          if lang and vim.treesitter.language.add(lang) then
+            vim.treesitter.start(args.buf)
+            vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+          end
+        end
+      })
+
+      vim.api.nvim_create_autocmd('User', {
+        pattern = 'LazyDone',
+        once = true,
+        callback = function()
+          vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+          vim.wo.foldmethod = 'expr'
+        end
+      })
+    end,
   },
 }, {})
