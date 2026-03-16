@@ -71,9 +71,41 @@ require('lazy').setup({
   },
 
   {
-    'pablojimpas/acme-colors',
-    name = 'acme',
+    'catppuccin/nvim',
+    name = 'catppuccin',
     priority = 1000,
+  },
+  -- {
+  --   'pablojimpas/acme-colors',
+  --   name = 'acme',
+  --   priority = 1000,
+  -- },
+
+  {
+    -- Set lualine as statusline
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    -- See `:help lualine.txt`
+    opts = {
+      options = {
+        icons_enabled = true,
+        theme = 'catppuccin',
+
+        section_separators = { left = '', right = '' },
+        component_separators = { left = '', right = '' }
+        -- component_separators = '',
+        -- section_separators = '',
+      },
+    },
+  },
+
+  {
+    -- Add indentation guides even on blank lines
+    'lukas-reineke/indent-blankline.nvim',
+    -- Enable `lukas-reineke/indent-blankline.nvim`
+    -- See `:help ibl`
+    main = 'ibl',
+    opts = {},
   },
 
   -- "gc" to comment visual regions/lines
@@ -136,12 +168,12 @@ require('lazy').setup({
     },
   },
 
-  -- {
-  --   -- Highlight, edit, and navigate code
-  --   'nvim-treesitter/nvim-treesitter',
-  --   dependencies = {
-  --     'nvim-treesitter/nvim-treesitter-textobjects',
-  --   },
-  --   build = ':TSUpdate',
-  -- },
+  {
+    -- Highlight, edit, and navigate code
+    'nvim-treesitter/nvim-treesitter',
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter-textobjects',
+    },
+    build = ':TSUpdate',
+  },
 }, {})
