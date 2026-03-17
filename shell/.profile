@@ -178,8 +178,9 @@ if [ -d "$CARGO_HOME/bin" ] ; then
 fi
 
 # Add ruby gems path if exists
-if [ -d "$HOME/.local/share/gem/ruby/2.7.0/bin" ] ; then
-    PATH="$PATH:$HOME/.local/share/gem/ruby/2.7.0/bin"
+export GEM_HOME="$(gem env user_gemhome)"
+if [ -d "$GEM_HOME" ] ; then
+    PATH="$PATH:$GEM_HOME/bin"
 fi
 
 [ ! -f ${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc ] && shortcuts >/dev/null 2>&1 &
