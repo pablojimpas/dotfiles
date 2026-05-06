@@ -9,21 +9,22 @@ horizontal_padding = 2
 transparency = 25
 font = Monospace 12
 format = "<b>%s</b>\n%b"
-frame_color = "#89B4FA"
+frame_color = "#89b4fa"
 separator_color= frame
+highlight = "#89b4fa"
 
 [urgency_low]
-background = "#1E1E2E"
-foreground = "#CDD6F4"
+background = "#1e1e2e"
+foreground = "#cdd6f4"
 timeout = 3
 
 [urgency_normal]
-background = "#1E1E2E"
-foreground = "#CDD6F4"
+background = "#1e1e2e"
+foreground = "#cdd6f4"
 timeout = 5
 
 [urgency_critical]
-background = "#1E1E2E"
-foreground = "#CDD6F4"
-frame_color = "#FAB387"
+background = "#1e1e2e"
+foreground = "#cdd6f4"
+frame_color = "#fab387"
 timeout = 10

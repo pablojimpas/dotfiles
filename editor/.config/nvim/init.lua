@@ -37,7 +37,7 @@ require('lazy').setup({
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/lazydev.nvim',
       -- Allows extra capabilities provided by blink.cmp
-      'saghen/blink.cmp',
+      { 'saghen/blink.cmp', version = '1.*' },
     },
   },
   {

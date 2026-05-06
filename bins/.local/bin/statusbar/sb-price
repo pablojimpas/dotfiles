@@ -13,7 +13,7 @@ url="${CRYPTOURL:-rate.sx}"
 target="${1%%-*}"
 denom="${1##*-}"
 name="${2:-$1}"
-icon="${3:-💰}"
+[ -n "$3" ] && icon="$3" || icon="💰"
 case "$denom" in
 	"$target"|usd) denom="usd"; symb="$" ;;
 	gbp) symb="£" ;;

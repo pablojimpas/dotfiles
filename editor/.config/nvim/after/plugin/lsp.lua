@@ -96,11 +96,12 @@ local servers = {
     },
   },
 
-  expert = {
-    cmd = { 'expert' },
-    root_markers = { 'mix.exs', '.git' },
-    filetypes = { 'elixir', 'eelixir', 'heex' },
-  },
+  elixirls = {},
+  -- expert = {
+  --   cmd = { 'expert' },
+  --   root_markers = { 'mix.exs', '.git' },
+  --   filetypes = { 'elixir', 'eelixir', 'heex' },
+  -- },
 }
 
 

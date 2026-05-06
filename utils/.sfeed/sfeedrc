@@ -41,6 +41,7 @@ feeds() {
 	feed 'kernelpanic.life' 'https://kernelpanic.life/rss.xml'
 	feed 'lambda.cx' 'https://blog.lambda.cx/index.xml'
 	feed 'landchad.net' 'https://landchad.net/rss.xml'
+	feed 'lucianonooijen.com' 'https://lucianonooijen.com/blog/index.xml'
 	feed 'lukesmith.xyz' 'https://lukesmith.xyz/rss.xml'
 	feed 'lupyuen.github.io' 'https://lupyuen.github.io/rss.xml'
 	feed 'meirt.com' 'https://meiert.com/en/feed/'
